@@ -1,0 +1,23 @@
+{
+  "name": "cvPro",
+  "version": "1.0.0",
+  "description": "Build a CVpro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RahulSomaraj/cvPro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RahulSomaraj/cvPro/issues"
+  },
+  "homepage": "https://github.com/RahulSomaraj/cvPro#readme",
+  "dependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
