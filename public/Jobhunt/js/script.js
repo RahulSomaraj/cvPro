@@ -91,6 +91,20 @@ $(document).on('ready',function(){
         }
     });
 
+
+    /*** QUICK POST SHARE ***/
+    $('.select-user-signin > span').on('click', function (){
+        $('.select-user-signin > span').removeClass('active');
+        $(this).addClass('active');
+        var val = $(this).text();
+        if(val=="Candidate"){
+            val = 1;
+            $("#userTypeSignin").val(val);
+        }else{
+            val = 2;
+            $("#userTypeSignin").val(val);
+        }
+    });
     /* Tabs Sec */
     $('.tab-sec li a').on("click", function(){
         var tab_id = $(this).attr('data-tab');

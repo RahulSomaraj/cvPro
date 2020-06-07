@@ -774,17 +774,22 @@
 		<span class="close-popup"><i class="la la-close"></i></span>
 		<h3>User Login</h3>
 		<span>Click To Login With Demo User</span>
-		<div class="select-user">
-			<span>Candidate</span>
-			<span>Employer</span>
+		<div class="select-user-signin" name="usertype" form="messagesignin">
+			<span value = "1">Candidate</span>
+			<span value = "2">Employer</span>
 		</div>
-		<form>
+		<form id= "messagesignin" action="login" method="post">
 			<div class="cfield">
-				<input type="text" placeholder="Username" />
+				<input type="text" name= "userName" placeholder="Username" />
 				<i class="la la-user"></i>
 			</div>
 			<div class="cfield">
-				<input type="password" placeholder="********" />
+				<input type="hidden" id="userTypeSignin" name="userType" placeholder="Username" />
+				<i class="la la-user"></i>
+			</div>
+
+			<div class="cfield">
+				<input type="password" name = "password"  placeholder="********" />
 				<i class="la la-key"></i>
 			</div>
 			<p class="remember-label">
@@ -807,7 +812,7 @@
 	<div class="account-popup">
 		<span class="close-popup"><i class="la la-close"></i></span>
 		<h3>Sign Up</h3>
-		<div class="select-user" name="usertype" form="message">
+		<div class="select-user" name="userType" form="message">
 			<span value = "1">Candidate</span>
 			<span value = "2">Employer</span>
 		</div>
@@ -817,7 +822,7 @@
 				<i class="la la-user"></i>
 			</div>
 			<div class="cfield">
-				<input type="hidden" id="userTypeSignup" name="usertype" placeholder="Username" />
+				<input type="hidden" id="userTypeSignup" name="userType" placeholder="Username" />
 				<i class="la la-user"></i>
 			</div>
 

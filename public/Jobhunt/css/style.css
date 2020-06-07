@@ -895,6 +895,38 @@ label::after {
     margin-top: 5px;
     cursor: pointer;
 }
+
+
+.select-user-signin {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.select-user-signin > span {
+    float: none;
+    display: inline-block;
+    font-family: Open Sans;
+    font-size: 13px;
+    color: #202020;
+    border: 2px solid;
+    
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+
+    padding: 9px 29px;
+    margin: 0 5px;
+        margin-top: 0px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+
+
 .account-popup > form {
     float: left;
     width: 100%;

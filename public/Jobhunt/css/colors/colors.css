@@ -69,6 +69,7 @@ Border Color
 -------------------------------------------------------------------*/
 .border-color,
 .select-user > span.active,
+.select-user-signin > span.active,
 .browse-all-cat a{
     border-color: #fb236a ;
 }

@@ -42,6 +42,10 @@ const UserSchema = new Schema({
     userName : {
         required : true,
         type : String
+    },
+    userType : {
+        required : true,
+        type : String 
     }
 });
 

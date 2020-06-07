@@ -15,6 +15,7 @@ router.get('/',(request,response)=>{
 });
 
 router.post('/save',(request,response)=>{
+    console.log(JSON.stringify(request.body));
     candidateServcie.create(JSON.parse(JSON.stringify(request.body))).then((data)=>{
         response.redirect('/');
     })
