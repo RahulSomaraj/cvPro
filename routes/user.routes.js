@@ -16,7 +16,7 @@ router.get('/',(request,response)=>{
 
 router.post('/save',(request,response)=>{
     candidateServcie.create(JSON.parse(JSON.stringify(request.body))).then((data)=>{
-        response.redirect('/')
+        response.redirect('/');
     })
     .catch((err)=>{
         response.render(__dirname+"public/index.ejs");
