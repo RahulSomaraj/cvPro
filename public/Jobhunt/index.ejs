@@ -173,8 +173,8 @@
 						<li class="menu-item-has-children">
 							<a href="#" title="">Home</a>
 							<ul>
-								<li><a href="index.html" title="">Home Layout 1</a></li>
-								<li><a href="index2.html" title="">Home Layout 2</a></li>
+								<li><a href=  ""title="">Home Layout 1</a></li>
+								<li><a href="/" title="">Home Layout 2</a></li>
 								<li><a href="index3.html" title="">Home Layout 3</a></li>
 								<li><a href="index4.html" title="">Home Layout 4</a></li>
 								<li><a href="index5.html" title="">Home Layout 5</a></li>
@@ -807,25 +807,30 @@
 	<div class="account-popup">
 		<span class="close-popup"><i class="la la-close"></i></span>
 		<h3>Sign Up</h3>
-		<div class="select-user">
-			<span>Candidate</span>
-			<span>Employer</span>
+		<div class="select-user" name="usertype" form="message">
+			<span value = "1">Candidate</span>
+			<span value = "2">Employer</span>
 		</div>
-		<form>
+		<form id= "message" action="user/save" method="post">
 			<div class="cfield">
-				<input type="text" placeholder="Username" />
+				<input type="text" name="userName" placeholder="Username" />
 				<i class="la la-user"></i>
 			</div>
 			<div class="cfield">
-				<input type="password" placeholder="********" />
+				<input type="hidden" id="userTypeSignup" name="usertype" placeholder="Username" />
+				<i class="la la-user"></i>
+			</div>
+
+			<div class="cfield">
+				<input type="password" name = "password" placeholder="********" />
 				<i class="la la-key"></i>
 			</div>
 			<div class="cfield">
-				<input type="text" placeholder="Email" />
+				<input type="text" name = "email" placeholder="Email" />
 				<i class="la la-envelope-o"></i>
 			</div>
 			<div class="dropdown-field">
-				<select data-placeholder="Please Select Specialism" class="chosen">
+				<select name = "field"data-placeholder="Please Select Specialism" class="chosen">
 					<option>Web Development</option>
 					<option>Web Designing</option>
 					<option>Art & Culture</option>
@@ -833,7 +838,7 @@
 				</select>
 			</div>
 			<div class="cfield">
-				<input type="text" placeholder="Phone Number" />
+				<input type="text" name = "phone_number" placeholder="Phone Number" />
 				<i class="la la-phone"></i>
 			</div>
 			<button type="submit">Signup</button>

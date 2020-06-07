@@ -873,6 +873,7 @@ label::after {
     width: 100%;
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 .select-user > span {
     float: none;

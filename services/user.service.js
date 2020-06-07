@@ -13,14 +13,17 @@ function findOne (query) {
 }
 
 function create (data) {  
+  console.log("data");
   return new Promise((rs, rj) => {
     const hash = bcrypt.hashSync(data.password, 10);
     data.password = hash;
     let user= new User(data);
     user.save(user, (err, _user) => {
       if (err) {
+        console.log(err);
         return rj(err);
       }
+      console.log(_user)
       return rs(_user);
     });
   });

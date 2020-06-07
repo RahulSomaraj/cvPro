@@ -81,6 +81,14 @@ $(document).on('ready',function(){
     $('.select-user > span').on('click', function (){
         $('.select-user > span').removeClass('active');
         $(this).addClass('active');
+        var val = $(this).text();
+        if(val=="Candidate"){
+            val = 1;
+            $("#userTypeSignup").val(val);
+        }else{
+            val = 2;
+            $("#userTypeSignup").val(val);
+        }
     });
 
     /* Tabs Sec */
