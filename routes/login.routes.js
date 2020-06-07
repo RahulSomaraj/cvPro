@@ -18,7 +18,7 @@ router.post('/login',(request,response)=>{
     })
 });
 
-router.get('logout',(request,response)=>{
+router.get('/logout',(request,response)=>{
     response.redirect('/');
 });
 
