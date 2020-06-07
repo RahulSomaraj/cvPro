@@ -12,7 +12,7 @@ const path = require('path');
 //app starts over here 
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public/jobpply')));
+app.use(express.static(path.join(__dirname, 'public/Jobhunt')));
 
 
 //variables start over here
@@ -24,7 +24,7 @@ app.use('/',loginRoutes);
 
 
 app.get('/',(request,response)=>{
-    response.sendFile(__dirname + '/public/jobpply/index.html');
+    response.sendFile(__dirname + '/public/Jobhunt/index.html');
 });
 
 app.listen(PORT,()=>{
