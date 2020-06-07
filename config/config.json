@@ -1,3 +1,11 @@
 {
-    
+    "mongo" : {
+        "host" : "localhost",
+        "dbName" : "cvPro",
+        "dbRSName" : "'",
+        "useSSL" : true,
+        "username" : "",
+        "password" : "",
+        "authDB" : "admin"
+    }
 }

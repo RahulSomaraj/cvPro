@@ -2,7 +2,15 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 
-const candidateSchema = new Schema({
+
+
+var validateEmail = function(email) {
+    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email)
+};
+
+
+const UserSchema = new Schema({
     name : {
         type:String,
         required:true
@@ -28,16 +36,19 @@ const candidateSchema = new Schema({
     },
     updated_at:{
         type:Date
+    },
+    picture:{
+        type: String
+    },
+    userName : {
+        required : true,
+        type : String
     }
 });
 
 
-var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
-};
 
-userSchema.pre('save', function(next) {
+UserSchema.pre('save', function(next) {
     if (!this.created_at) 
         this.created_at = new Date;
     this.updated_at = new Date;
@@ -45,5 +56,5 @@ userSchema.pre('save', function(next) {
 });
 
 
-const User = mongoose.model('candidate',candidateSchema);
+const User =  mongoose.model('user',UserSchema);
 module.exports = User;

@@ -24,9 +24,10 @@ this.connect = () => {
         url = `mongodb://${DB_USER}:${password}@${DB_HOST.join()}/${DB_NAME}?ssl=${DB_USE_SSL}&replicaSet=${DB_RS_NAME}&authSource=${DB_AUTHDB}`;
     }
     if(process.env.NODE_ENV=="development"){
+        console.log(url);
         url = `mongodb://${DB_HOST}:27017/${DB_NAME}`;   
     }
-    mongoose.connect(url, { useNewUrlParser: true });
+    mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
     let db = mongoose.connection;
     db.on('open', () => {
       console.log(`Connected to ${db.name}`);
