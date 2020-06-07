@@ -775,21 +775,20 @@
 		<h3>User Login</h3>
 		<span>Click To Login With Demo User</span>
 		<div class="select-user-signin" name="userType" form="messagesignin">
-			<span value = "1">Candidate</span>
+			<span class="active" value = "1">Candidate</span>
 			<span value = "2">Employer</span>
 		</div>
 		<form id= "messagesignin" action="login" method="post">
 			<div class="cfield">
-				<input type="text" name= "userName" placeholder="Username" />
+				<input type="text" name= "userName" placeholder="Username" required/>
 				<i class="la la-user"></i>
 			</div>
-			<div class="cfield">
+			<div >
 				<input type="hidden" id="userTypeSignin" name="userType" placeholder="Username" />
-				<i class="la la-user"></i>
 			</div>
 
 			<div class="cfield">
-				<input type="password" name = "password"  placeholder="********" />
+				<input type="password" name = "password"  placeholder="********" required/>
 				<i class="la la-key"></i>
 			</div>
 			<p class="remember-label">
@@ -813,25 +812,21 @@
 		<span class="close-popup"><i class="la la-close"></i></span>
 		<h3>Sign Up</h3>
 		<div class="select-user" name="userType" form="message">
-			<span value = "1">Candidate</span>
+			<span class="active" value = "1">Candidate</span>
 			<span value = "2">Employer</span>
 		</div>
 		<form id= "message" action="user/save" method="post">
 			<div class="cfield">
-				<input type="text" name="userName" placeholder="Username" />
+				<input type="text" name="userName" placeholder="Username" required/>
 				<i class="la la-user"></i>
 			</div>
+			
 			<div class="cfield">
-				<input type="hidden" id="userTypeSignup" name="userType" placeholder="Username" />
-				<i class="la la-user"></i>
-			</div>
-
-			<div class="cfield">
-				<input type="password" name = "password" placeholder="********" />
+				<input type="password" name = "password" placeholder="********" required/>
 				<i class="la la-key"></i>
 			</div>
 			<div class="cfield">
-				<input type="text" name = "email" placeholder="Email" />
+				<input type="email" name = "email" placeholder="Email" required/>
 				<i class="la la-envelope-o"></i>
 			</div>
 			<div class="dropdown-field">
@@ -843,8 +838,11 @@
 				</select>
 			</div>
 			<div class="cfield">
-				<input type="text" name = "phone_number" placeholder="Phone Number" />
+				<input type="number" name = "phone_number" placeholder="Phone Number" required/>
 				<i class="la la-phone"></i>
+			</div>
+			<div >
+				<input type="hidden" id="userTypeSignup" name="userType" value ="1"/>
 			</div>
 			<button type="submit">Signup</button>
 		</form>
