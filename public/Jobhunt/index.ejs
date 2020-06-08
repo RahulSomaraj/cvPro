@@ -22,6 +22,11 @@
 </head>
 <body>
 
+	<% if (data.forgotPassword) { %> 
+    	<script>alert('A new password have been mailed to you ');</script> 
+ 	<% } %>
+ 
+
 <div class="page-loading">
 	<img src="images/loader.gif" alt="" />
 </div>
@@ -794,7 +799,7 @@
 			<p class="remember-label">
 				<input type="checkbox" name="cb" id="cb1"><label for="cb1">Remember me</label>
 			</p>
-			<a href="#" title="">Forgot Password?</a>
+			<a href="/forgotPassword" title="">Forgot Password?</a>
 			<button type="submit">Login</button>
 		</form>
 		<div class="extra-login">

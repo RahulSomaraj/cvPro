@@ -35,7 +35,7 @@ app.use('/',loginRoutes);
 
 
 app.get('/',(request,response)=>{
-    response.render(__dirname + '/public/Jobhunt/index', { request : request, response : response /* other models */});
+    response.render(__dirname + '/public/Jobhunt/index', {data : {}, request : request, response : response /* other models */});
 });
 
 app.listen(PORT,()=>{

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const candidateServcie = require('../services/candidate.service');
+const path = require('path');
 
 router.use(express.json());
 
@@ -13,6 +14,14 @@ router.get('/',(request,response)=>{
     })
     response.send('Candidate Page');
 });
+
+
+
+router.get('/profile',(request,response)=>{
+    response.render(path.join(__dirname,'../public/JobHunt/candidates_profile.ejs'));
+});
+
+
 
 router.post('/save',(request,response)=>{
     candidateServcie.create(request.body).then((data)=>{

@@ -10,7 +10,10 @@ var validateEmail = function(email) {
 };
 
 
-const UserSchema = new Schema({
+const USerProfileSchema = new Schema({
+    name : {
+        type:String
+    },
     email : {
         type : String,
         required: true,
@@ -48,7 +51,7 @@ const UserSchema = new Schema({
 
 
 
-UserSchema.pre('save', function(next) {
+USerProfileSchema.pre('save', function(next) {
     if (!this.created_at) 
         this.created_at = new Date;
     this.updated_at = new Date;
@@ -56,5 +59,5 @@ UserSchema.pre('save', function(next) {
 });
 
 
-const User =  mongoose.model('user',UserSchema);
+const User =  mongoose.model('userProfile',USerProfileSchema);
 module.exports = User;
