@@ -36,7 +36,9 @@ router.get('/jobAlert',(request,response)=>{
 router.get('/coverLetter',(request,response)=>{
     response.render(path.join(__dirname,'../public/JobHunt/candidates_cv_cover_letter.ejs'),{data : data});
 });
-
+router.get('/single',(request,response)=>{
+    response.render(path.join(__dirname,'../public/JobHunt/candidates_single.ejs'),{data : data});
+});
 
 
 
@@ -46,10 +48,8 @@ router.post('/updatecandidate',(request,response)=>{
     console.log(request.cookies['userId']);
     var obj = JSON.parse(JSON.stringify(request.body))
     Object.keys(obj).forEach(key => (obj[key] !== "" ||obj[key]) ? obj[key] = obj[key] : delete obj[key] );
-    console.log("obj")
-    console.log(JSON.parse(JSON.stringify(request.body)))
     userService.update({_id : request.cookies['userId'],...obj}).then((data)=>{
-        console.log("savde");
+        console.log("saved");
         console.log(data)
         response.render(path.join(__dirname,'../public/JobHunt/candidates_profile.ejs'),{data:data});
     }).catch((err)=>{
