@@ -5,6 +5,7 @@ const candidateServcie = require('../services/user.service');
 router.use(express.json());
 
 router.get('/',(request,response)=>{
+
     candidateServcie.find({}).then((data)=>{
         response.send(data);
     })
@@ -46,6 +47,7 @@ router.put('/edit/:id',(request,response)=>{
         response.send(err);
     })    
 });
+
 
 
 

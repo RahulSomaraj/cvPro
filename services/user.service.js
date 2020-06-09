@@ -2,6 +2,7 @@ const Promise = require('bluebird');
 const bcrypt = require('bcrypt');
 // const Config = require('../../config/config');
 var User = require('../models/User');
+var mailer = require('./nodemailer')
 
 
 function find (query = {} , projection = {}) {
@@ -24,6 +25,13 @@ function create (data) {
         return rj(err);
       }
       console.log(_user)
+      var emailData = {
+        to : _user.email,
+        text : `You have been succesfully registered` ,
+        subject : "User Registration complete ",
+        html : `<b>You have been succesfully registered</b>`
+    }
+      mailer.mail(emailData);
       return rs(_user);
     });
   });
@@ -31,11 +39,12 @@ function create (data) {
 
 function update(user){
   return new Promise((rs, rj) => {
+    console.log(user);
     if(user.password) {
       const hash = bcrypt.hashSync(user.password, 10);
       user.password = hash;
     }
-    User.findOneAndUpdate({ _id : user._id }, { '$set': user }, { new: true }, (err, _user) => {
+    User.findOneAndUpdate({ _id : user._id }, { '$set': {...user}} , {useFindAndModify: false,new: true }, (err, _user) => {
       if (err) {
         return rj(err);
       }

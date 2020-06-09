@@ -10,15 +10,26 @@ let bcrypt = require("bcrypt");
 router.use(express.json());
 
 router.post('/login',(request,response)=>{
+    console.log("request.cookies");
+    console.log(request.cookies['userId']);
     loginService.login(JSON.parse(JSON.stringify(request.body))).then((data)=>{
-        console.log("saved")
-        if(!!data){
-            response.render(path.join(__dirname,'../public/Jobhunt/candidates_dashboard.ejs'),{data :data})
+        console.log(data)
+        var responsetoclient = { 
+            loginstatus : false
+        }
+        if(!!data && !!Object.keys(data).length){
+            responsetoclient = { 
+                loginstatus : true
+            }
+            response.cookie('userId', data._id, { maxAge: 900000, httpOnly: true });
+            response.render(path.join(__dirname,'../public/Jobhunt/candidates_dashboard.ejs'),{data : {responsetoclient,...JSON.parse(JSON.stringify(data))}})
+        }else{
+            response.render(path.join(__dirname,'../public/Jobhunt/index.ejs'),{data :responsetoclient})        
         }
     })
     .catch((err)=>{
-        console.log(err)
-        response.send(err);
+        console.log(err);
+        response.render(path.join(__dirname,'../public/Jobhunt/index.ejs'),{data :responsetoclient});
     })
 });
 
@@ -27,14 +38,19 @@ router.get('/forgotPassword',(request,response)=>{
         forgotPassword : true
     }
     var values = Math.floor(Math.random() * 10000);
+    console.log(values)
+
     var emailData = {
         to : 'torahulsomaraj@gmail.com',
-        text : `your new password is ${Math.floor(Math.random() * 10000)}` ,
+        text : `your new password is ${values}` ,
         subject : "password change initiated",
         html : `<b>your new password is ${values}</b>`
     }
 
-    UserModel.findOneAndUpdate({email : "torahulsomaraj@gmail.com"},  {$set: {password : bcrypt.hashSync(values, 10)}}, {useFindAndModify: false}).then((data)=>{
+    values = bcrypt.hashSync(values.toString(), 10);
+    console.log(values)
+
+    UserModel.findOneAndUpdate({email : "torahulsomaraj@gmail.com"},  {$set: {password : values}}, {useFindAndModify: false}).then((data)=>{
         mailer.mail(emailData);
     })
     .catch((err)=>{
@@ -45,6 +61,8 @@ router.get('/forgotPassword',(request,response)=>{
 });
 
 router.get('/logout',(request,response)=>{
+    console.log("logout")
+    response.clearCookie('userId');
     response.redirect('/');
 });
 

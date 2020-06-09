@@ -43,6 +43,77 @@ const UserSchema = new Schema({
     userType : {
         required : true,
         type : String 
+    },
+    filePc : {
+        type : String
+    },
+    fullName : {
+        type : String
+    },
+    jobTitle : {
+        type : String
+    },
+    minimumSalary : {
+        type : String
+    },
+    allowinsearch : {
+        type : Boolean
+    },
+    experience : {
+        type : Number
+    },
+    age : {
+        type :Number
+    },
+    currentSalaryMin : {
+        type : String
+    },
+    currentSalaryMax : {
+        type : String
+    },
+    expectedSalMin : {
+        type : String
+    },
+    expectedSalMax : {
+        type : String
+    },
+    educationlevel : {
+        type : String
+    },
+    languages : {
+        type : String
+    },
+    categories : {
+        type : Array,
+        default : [] 
+    },
+    description : {
+        type : String,
+    },
+    website :{
+        type :String
+    },
+    country : {
+        type : String,
+    },
+    city : {
+        type : String,
+    },
+    fb : {
+        type : String
+    },
+    twitter : {
+        type : String
+    },
+    linkedin : { 
+        type : String
+    },
+    google : {
+        type : String 
+    },
+    appliedJobs : {
+        type : Array,
+        default : []
     }
 });
 

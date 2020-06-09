@@ -12,6 +12,8 @@ const employerRoutes = require('./routes/employer.routes');
 const loginRoutes = require('./routes/login.routes');
 const userRoutes = require('./routes/user.routes');
 const path = require('path');
+var cookieParser = require('cookie-parser')
+
 //app starts over here 
 const app = express();
 // app.use(express.json());
@@ -20,7 +22,9 @@ app.set('views', path.join(__dirname, 'public/Jobhunt'));
 app.set('view engine', 'ejs');
 // parse application/json
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(cookieParser());
+
 
 
 
@@ -35,7 +39,11 @@ app.use('/',loginRoutes);
 
 
 app.get('/',(request,response)=>{
-    response.render(__dirname + '/public/Jobhunt/index', {data : {}, request : request, response : response /* other models */});
+    var responsetoclient={
+        loginstatus : true,
+        forgotPassword : false
+    }
+    response.render(__dirname + '/public/Jobhunt/index', {data : {...responsetoclient}, request : request, response : response /* other models */});
 });
 
 app.listen(PORT,()=>{
