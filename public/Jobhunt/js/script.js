@@ -67,9 +67,20 @@ $(document).on('ready',function(){
         $('html').removeClass('no-scroll');
     });
 
+
+    $('.password-popup').on('click', function(){
+        $('.signin-popup-box').fadeOut('fast');
+        $('.password-popup-box').fadeIn('fast');
+        $('html').addClass('no-scroll');
+    });
+    $('.close-popup').on('click', function(){
+        $('.password-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+    });
+
     /* Signup Popup */
     $('.signup-popup').on('click', function(){
-        $('.signup-popup-box').fadeIn('fast');
+        $('.password-popup-box').fadeIn('fast');
         $('html').addClass('no-scroll');
     });
     $('.close-popup').on('click', function(){

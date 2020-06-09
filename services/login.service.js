@@ -17,7 +17,7 @@ function login(query){
             ]
         }
         
-        console.log(finalquery);
+        console.log(JSON.stringify(finalquery));
         
         
         userModel.findOne(finalquery,(err,data)=>{

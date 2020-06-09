@@ -12,6 +12,7 @@ router.use(express.json());
 router.post('/login',(request,response)=>{
     console.log("request.cookies");
     console.log(request.cookies['userId']);
+    console.log(JSON.stringify(request.body))
     loginService.login(JSON.parse(JSON.stringify(request.body))).then((data)=>{
         console.log(data)
         var responsetoclient = { 
@@ -33,7 +34,7 @@ router.post('/login',(request,response)=>{
     })
 });
 
-router.get('/forgotPassword',(request,response)=>{
+router.post('/forgotPassword',(request,response)=>{
     var data = {
         forgotPassword : true
     }
@@ -41,7 +42,7 @@ router.get('/forgotPassword',(request,response)=>{
     console.log(values)
 
     var emailData = {
-        to : 'torahulsomaraj@gmail.com',
+        to : request.body.email,
         text : `your new password is ${values}` ,
         subject : "password change initiated",
         html : `<b>your new password is ${values}</b>`
@@ -50,7 +51,7 @@ router.get('/forgotPassword',(request,response)=>{
     values = bcrypt.hashSync(values.toString(), 10);
     console.log(values)
 
-    UserModel.findOneAndUpdate({email : "torahulsomaraj@gmail.com"},  {$set: {password : values}}, {useFindAndModify: false}).then((data)=>{
+    UserModel.findOneAndUpdate({email : request.body.email},  {$set: {password : values}}, {useFindAndModify: false}).then((data)=>{
         mailer.mail(emailData);
     })
     .catch((err)=>{
