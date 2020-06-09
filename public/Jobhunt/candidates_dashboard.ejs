@@ -56,7 +56,7 @@
 			<div class="responsivemenu">
 				<ul>
 					<li >
-						<a href="#" title="">Home</a>							
+						<a href="/dashboard" title="">Home</a>							
 					</li>						
 					
 				</ul>
@@ -159,13 +159,13 @@
 				 		<div class="widget">
 				 			<div class="tree_widget-sec">
 				 				<ul>
-				 					<li><a href="candidate/profile" title=""><i class="la la-file-text"></i>My Profile</a></li>
-									<li><a href="candidate/myresume" title=""><i class="la la-briefcase"></i>My Resume</a></li>
-									<li><a href="candidate/shortList" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
-									<li><a href="candidate/appliedJobs" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
-									<li><a href="candidate/jobAlert" title=""><i class="la la-user"></i>Job Alerts</a></li>
-									<li><a href="candidate/coverLetter" title=""><i class="la la-file-text"></i>Cv & Cover Letter</a></li>
-									<li><a href="candidate/change_password" title=""><i class="la la-flash"></i>Change Password</a></li>
+				 					<li><a href="profile" title=""><i class="la la-file-text"></i>My Profile</a></li>
+									<li><a href="myresume" title=""><i class="la la-briefcase"></i>My Resume</a></li>
+									<li><a href="shortList" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
+									<li><a href="appliedJobs" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
+									<li><a href="jobAlert" title=""><i class="la la-user"></i>Job Alerts</a></li>
+									<li><a href="coverLetter" title=""><i class="la la-file-text"></i>Cv & Cover Letter</a></li>
+									<li><a href="change_password" title=""><i class="la la-flash"></i>Change Password</a></li>
 									<li><a href="/logout" title=""><i class="la la-unlink"></i>Logout</a></li>
 				 				</ul>
 				 			</div>
@@ -346,24 +346,12 @@
 	<span class="close-profile"><i class="la la-close"></i></span>
 	<div class="can-detail-s">
 		<div class="cst"><img src="http://placehold.it/145x145" alt="" /></div>
-		<h3>David CARLOS</h3>
-		<span><i>UX / UI Designer</i> at Atract Solutions</span>
-		<p>creativelayers088@gmail.com</p>
-		<p>Member Since, 2017</p>
-		<p><i class="la la-map-marker"></i>Istanbul / Turkey</p>
-	</div>
-	<div class="tree_widget-sec">
-		<ul>
-			<li><a href="candidate/profile" title=""><i class="la la-file-text"></i>My Profile</a></li>
-			<li><a href="candidate/myresume" title=""><i class="la la-briefcase"></i>My Resume</a></li>
-			<li><a href="candidate/shortList" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
-			<li><a href="candidate/appliedJobs" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
-			<li><a href="candidate/jobAlert" title=""><i class="la la-user"></i>Job Alerts</a></li>
-			<li><a href="candidate/coverLetter" title=""><i class="la la-file-text"></i>Cv & Cover Letter</a></li>
-			<li><a href="candidate/change_password" title=""><i class="la la-flash"></i>Change Password</a></li>
-			<li><a href="/" title=""><i class="la la-unlink"></i>Logout</a></li>
-		</ul>
-	</div>
+		<h3><%=data.fullName%></h3>
+		<span><i><%=data.jobTitle%></i> </span>
+		<p><%=data.email%></p>
+		<p>Member Since, <%=data.created_at%></p>
+		<p><i class="la la-map-marker"></i><%=data.country%> / <%=data.city%></p>
+	</div>	
 </div><!-- Profile Sidebar -->
 
 <div class="view-resumesec">

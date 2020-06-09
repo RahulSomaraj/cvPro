@@ -22,8 +22,9 @@ router.post('/login',(request,response)=>{
             responsetoclient = { 
                 loginstatus : true
             }
-            response.cookie('userId', data._id, { maxAge: 900000, httpOnly: true });
-            response.render(path.join(__dirname,'../public/Jobhunt/candidates_dashboard.ejs'),{data : {responsetoclient,...JSON.parse(JSON.stringify(data))}})
+            response.cookie('userId', data._id, { maxAge: 86400000, httpOnly: true });
+            response.redirect('candidate/dashboard');
+            // response.render(path.join(__dirname,'../public/Jobhunt/candidates_dashboard.ejs'),{data : {responsetoclient,...JSON.parse(JSON.stringify(data))}})
         }else{
             response.render(path.join(__dirname,'../public/Jobhunt/index.ejs'),{data :responsetoclient})        
         }

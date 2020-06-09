@@ -80,7 +80,7 @@ $(document).on('ready',function(){
 
     /* Signup Popup */
     $('.signup-popup').on('click', function(){
-        $('.password-popup-box').fadeIn('fast');
+        $('.signup-popup-box').fadeIn('fast');
         $('html').addClass('no-scroll');
     });
     $('.close-popup').on('click', function(){

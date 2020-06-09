@@ -378,11 +378,17 @@
 					 						<div class="pf-field">
 					 							<input type="text" name="website"  placeholder="www.jobhun.com" />
 					 						</div>
-					 					</div>
+										 </div>
+										 <div class="col-lg-4">
+											<span class="pf-title">User Name </span>
+											<div class="pf-field">
+												<input type="text" name="userName"  placeholder="Ali Jawan" />
+											</div>
+										</div>
 					 					<div class="col-lg-6">
 					 						<span class="pf-title">Country</span>
 					 						<div class="pf-field">
-					 							<select data-placeholder="Please Select Specialism" class="chosen">
+					 							<select data-placeholder="Please Select Specialism" name="country" class="chosen">
 													<option name="country" value="India">India</option>
 													<option name="country" value="Pakistan">Pakistan</option>
 													<option name="country" value="Dubai">Dubai</option>
@@ -393,7 +399,7 @@
 					 					<div class="col-lg-6">
 					 						<span class="pf-title">City</span>
 					 						<div class="pf-field">
-					 							<select data-placeholder="Please Select Specialism" class="chosen">
+					 							<select data-placeholder="Please Select Specialism" name="city" class="chosen">
 													<option name="city" value="somecity">SomeCity</option>
 													<option name="city" value="somecity">SomeCity</option>
 													<option name="city" value="somecity">SomeCity</option>
@@ -528,25 +534,14 @@
 	<span class="close-profile"><i class="la la-close"></i></span>
 	<div class="can-detail-s">
 		<div class="cst"><img src="http://placehold.it/145x145" alt="" /></div>
-		<h3>David CARLOS</h3>
-		<span><i>UX / UI Designer</i> at Atract Solutions</span>
-		<p>creativelayers088@gmail.com</p>
-		<p>Member Since, 2017</p>
-		<p><i class="la la-map-marker"></i>Istanbul / Turkey</p>
-	</div>
-	<div class="tree_widget-sec">
-		<ul>
-				 					<li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>My Profile</a></li>
-									<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
-									<li><a href="candidates_shortlist.html" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
-									<li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
-									<li><a href="candidates_job_alert.html" title=""><i class="la la-user"></i>Job Alerts</a></li>
-									<li><a href="candidates_cv_cover_letter.html" title=""><i class="la la-file-text"></i>Cv & Cover Letter</a></li>
-									<li><a href="candidates_change_password.html" title=""><i class="la la-flash"></i>Change Password</a></li>
-									<li><a href="#" title=""><i class="la la-unlink"></i>Logout</a></li>
-				 				</ul>
-	</div>
+		<h3><%=data.fullName%></h3>
+		<span><i><%=data.jobTitle%></i> </span>
+		<p><%=data.email%></p>
+		<p>Member Since, <%=data.created_at%></p>
+		<p><i class="la la-map-marker"></i><%=data.country%> / <%=data.city%></p>
+	</div>	
 </div><!-- Profile Sidebar -->
+
 
 <script src="/js/jquery.min.js" type="text/javascript"></script>
 <script src="/js/modernizr.js" type="text/javascript"></script>
