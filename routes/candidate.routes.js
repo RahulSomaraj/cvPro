@@ -3,6 +3,8 @@ const router = express.Router();
 const candidateServcie = require('../services/candidate.service');
 const userService = require('../services/user.service');
 const path = require('path');
+var resume = require(JSON.parse(JSON.stringify('../resume.json')))
+console.log(resume)
 
 router.use(express.json());
 
@@ -37,7 +39,9 @@ router.get('/coverLetter',(request,response)=>{
     response.render(path.join(__dirname,'../public/JobHunt/candidates_cv_cover_letter.ejs'),{data : data});
 });
 router.get('/single',(request,response)=>{
-    response.render(path.join(__dirname,'../public/JobHunt/candidates_single.ejs'),{data : data});
+    console.log(resume);
+    response.render(path.join(__dirname,'../public/JobHunt/candidates_single.ejs'),{data : {...data,resume:{...resume}}});
+    response.download(path.join(__dirname,'resume.pdf'));
 });
 
 
