@@ -11859,3 +11859,13 @@ header.style4 .account-btns > li a,
     -o-transition: all 0.4s ease 0s;
     transition: all 0.4s ease 0s;
 }
+
+/* CUSTOM STYLES */
+ [contenteditable="true"] {
+     /* text-decoration: underline; */
+     border-bottom: 1px solid #c0c0c0;
+     max-width: 90%;
+     min-width: 30px;
+     content: " ";
+ }
+
