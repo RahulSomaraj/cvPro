@@ -1,76 +1,16 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Job Hunt</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="CreativeLayers">
-
-	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css" />
-	<link rel="stylesheet" href="css/icons.css">
-	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link rel="stylesheet" type="text/css" href="css/responsive.css" />
-	<link rel="stylesheet" type="text/css" href="css/chosen.css" />
-	<link rel="stylesheet" type="text/css" href="css/colors/colors.css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-	
-</head>
+	<%- include('includes/header', data); %>
 <body>
-
 	<% if (data.forgotPassword) { %> 
     	<script>alert('A new password have been mailed to you ');</script> 
  	<% } %>
  	<% if (!data.loginstatus && data.loginstatus!= null) { %> 
     	<script>alert('Wrong credentials-- Login failed ');</script> 
  	<% } %>
- 
-
-<div class="page-loading">
-	<img src="images/loader.gif" alt="" />
-</div>
-
-<div class="theme-layout" id="scrollup">
-	
-	<div class="responsive-header">
-		<div class="responsive-menubar">
-			<div class="res-logo"><a href="index.html" title=""><img src="http://placehold.it/178x40" alt="" /></a></div>
-			<div class="menu-resaction">
-				<div class="res-openmenu">
-					<img src="images/icon.png" alt="" /> Menu
-				</div>
-				<div class="res-closemenu">
-					<img src="images/icon2.png" alt="" /> Close
-				</div>
-			</div>
-		</div>
-		<div class="responsive-opensec">
-			<div class="btn-extars">
-				<a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
-				<ul class="account-btns">
-					<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
-				</ul>
-			</div><!-- Btn Extras -->
-			<form class="res-search">
-				<input type="text" placeholder="Job title, keywords or company name" />
-				<button type="submit"><i class="la la-search"></i></button>
-			</form>
-			<div class="responsivemenu">
-				<ul>
-					<li class="menu-item-has-children">
-						<a href="#" title="">Home</a>
-					</li>						
-				</ul>
-			</div>
-		</div>
-	</div>
-	
-	<header class="stick-top forsticky">
+	<%- include('includes/loader', data); %>
+	<div class="theme-layout" id="scrollup">
+		<%- include('includes/dashboard_responsive_header', data); %>
+		<header class="stick-top forsticky">
 		<div class="menu-sec">
 			<div class="container">
 				<div class="logo">

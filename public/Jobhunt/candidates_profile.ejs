@@ -1,70 +1,9 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Jobhunt</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="CreativeLayers">
-
-	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css" />
-	<link rel="stylesheet" href="/css/icons.css">
-	<link rel="stylesheet" href="/css/animate.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="/css/responsive.css" />
-	<link rel="stylesheet" type="text/css" href="/css/chosen.css" />
-	<link rel="stylesheet" type="text/css" href="/css/colors/colors.css" />
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-	
-</head>
+<%- include('includes/header', data); %>
 <body>
-
-<div class="page-loading">
-	<img src="images/loader.gif" alt="" />
-	<span>Skip Loader</span>
-</div>
-
+<%- include('includes/loader', data); %>
 <div class="theme-layout" id="scrollup">
-	
-	<div class="responsive-header">
-		<div class="responsive-menubar">
-			<div class="res-logo"><a href="index.html" title=""><img src="http://placehold.it/178x40" alt="" /></a></div>
-			<div class="menu-resaction">
-				<div class="res-openmenu">
-					<img src="images/icon.png" alt="" /> Menu
-				</div>
-				<div class="res-closemenu">
-					<img src="images/icon2.png" alt="" /> Close
-				</div>
-			</div>
-		</div>
-		<div class="responsive-opensec">
-			<!-- <div class="btn-extars">
-				<a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
-				<ul class="account-btns">
-					<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
-				</ul>
-			</div>Btn Extras -->
-			<form class="res-search">
-				<input type="text" required placeholder="Job title, keywords or company name" />
-				<button type="submit"><i class="la la-search"></i></button>
-			</form>
-			<div class="responsivemenu">
-				<ul>
-					<li >
-						<a href="dashboard" title="">Home</a>							
-					</li>						
-					
-				</ul>
-			</div>
-		</div>
-	</div>
-
-
+	<%- include('includes/dashboard_responsive_header', data); %>
 	<header class="stick-top">
 		<div class="menu-sec">
 			<div class="container">
@@ -85,7 +24,8 @@
 										<h3><a href="#" title="">Web Designer / Developer</a></h3>
 										<span>Massimo Artemisis</span>
 									</div>
-								</div><!-- Job -->
+								</div>
+								<!-- Job -->
 							</li>
 							<li>
 								<div class="job-listing">
@@ -94,7 +34,8 @@
 										<h3><a href="#" title="">C Developer (Senior) C .Net</a></h3>
 										<span>StarHealth</span>
 									</div>
-								</div><!-- Job -->
+								</div>
+								<!-- Job -->
 							</li>
 							<li>
 								<div class="job-listing">
@@ -103,7 +44,8 @@
 										<h3><a href="#" title="">Marketing Director</a></h3>
 										<span>Tix Dog</span>
 									</div>
-								</div><!-- Job -->
+								</div>
+								<!-- Job -->
 							</li>
 							<li>
 								<div class="job-listing">
@@ -112,7 +54,8 @@
 										<h3><a href="#" title="">Web Designer / Developer</a></h3>
 										<span>Massimo Artemisis</span>
 									</div>
-								</div><!-- Job -->
+								</div>
+								<!-- Job -->
 							</li>
 							<li>
 								<div class="job-listing">
@@ -121,7 +64,8 @@
 										<h3><a href="#" title="">Web Designer / Developer</a></h3>
 										<span>Massimo Artemisis</span>
 									</div>
-								</div><!-- Job -->
+								</div>
+								<!-- Job -->
 							</li>
 						</ul>
 					</div>
@@ -137,60 +81,16 @@
 		</div>
 	</header>
 
-
-	<section class="overlape">
-		<div class="block no-padding">
-			<div data-velocity="-.1" style="background: url(http://placehold.it/1600x800) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
-			<div class="container fluid">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="inner-header">
-							<h3>Welcome <%=data.fullName%></h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
+	<%- include('includes/dashboard_overlape', data); %>
 	<section>
 		<div class="block no-padding">
 			<div class="container">
 				 <div class="row no-gape">
-				 	<aside class="col-lg-3 column border-right">
-						<div class="tree_widget-sec">
-							<ul>
-								<li><a href="profile" title=""><i class="la la-file-text"></i>Edit Profile</a></li>
-								<li><a href="single" title=""><i class="la la-file-text"></i>My Profile</a></li>
-							   <li><a href="myresume" title=""><i class="la la-briefcase"></i>My Resume</a></li>
-							   <li><a href="shortList" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
-							   <li><a href="appliedJobs" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
-							   <li><a href="jobAlert" title=""><i class="la la-user"></i>Job Alerts</a></li>
-							   <li><a href="coverLetter" title=""><i class="la la-file-text"></i>Cv & Cover Letter</a></li>
-							   <li><a href="change_password" title=""><i class="la la-flash"></i>Change Password</a></li>
-							   <li><a href="/logout" title=""><i class="la la-unlink"></i>Logout</a></li>
-							</ul>
-						</div>
+					 <%- include('includes/dashboard__sidebar__menu', data); %>
 
-						
-				 		<div class="widget">
-				 			<div class="skill-perc">
-				 				<h3>Skills Percentage </h3>
-				 				<p>Put value for "Cover Image" field to increase your skill up to "15%"</p>
-				 				<div class="skills-bar">
-				 					<span>85%</span>
-				 					<div 
-				 						class="second circle" 
-				 						data-size="155"
-				 						data-thickness="60">
-								    </div>
-				 				</div>
-				 			</div>
-				 		</div>
-				 	</aside>
-				 	<div class="col-lg-9 column">
+					 <div class="col-lg-9 column">
 				 		<div class="padding-left">
-					 		<div class="profile-title">
+					 		<div class="profile-title" hidden>
 					 			<h3>My Profile</h3>
 					 			<div class="upload-img-bar">
 					 				<span class="round"><img src="http://placehold.it/140x140" alt="" /><i>x</i></span>
@@ -199,7 +99,7 @@
 					 					<span>Max file size is 1MB, Minimum dimension: 270x210 And Suitable files are .jpg & .png</span>
 					 				</div>
 					 			</div>
-					 			<div class="upload-img-bar">
+					 			<div class="upload-img-bar" >
 					 				<span class="round"><img src="http://placehold.it/140x140" alt="" /><i>x</i></span>
 					 				<div class="upload-info">
 					 					<a href="#" title="">Browse</a>
@@ -210,7 +110,7 @@
 					 		<div class="profile-form-edit">
 					 			<form action="updatecandidate" method="POST">
 					 				<div class="row">
-					 					<div class="col-lg-6">
+					 					<div class="col-lg-12">
 					 						<span class="pf-title">Full Name</span>
 					 						<div class="pf-field">
 					 							<input type="text" name="fullName" value='<%=data.fullName%>' placeholder="<%=data.fullName%>" />
@@ -231,14 +131,14 @@
 												</select>
 					 						</div>
 					 					</div>
-					 					<div class="col-lg-6">
+					 					<div class="col-lg-6" hidden>
 					 						<span class="pf-title">Minimum Salary</span>
 					 						<div class="pf-field">
 					 							<input type="text" name="minimumSalary" value='<%=data.minimumSalary%>'  placeholder="$4250" />
 					 						</div>
 					 					</div>
 					 					<div class="col-lg-6">
-					 						<span class="pf-title">Experience</span>
+					 						<span class="pf-title">Experience (In Years)</span>
 					 						<div class="pf-field">
 												<input type="number" name="experience" value='<%=data.experience%>' placeholder="1 Years" />
 											</div>
@@ -249,29 +149,48 @@
 												<input type="number" name="age" value='<%=data.age%>' placeholder="10" />
 											</div>
 					 					</div>
-					 					<div class="col-lg-3">
+					 					<div class="col-lg-6">
 					 						<span class="pf-title">Current Salary($) min</span>
 					 						<div class="pf-field">
-					 							<input type="text" name="currentSalaryMin" value='<%=data.currentSalaryMin%>' placeholder="20K" />
+<!--					 							<input type="text" name="currentSalaryMin" value='< %=data.currentSalaryMin% >' placeholder="20K" />-->
+												<select data-placeholder="Current Salary" class="chosen">
+													<option name="currentSalaryMin" value="0-5000">0 - 5000</option>
+													<option name="currentSalaryMin" value="5000-10000">5000-10000</option>
+													<option name="currentSalaryMin" value="10000-15000">10000-15000</option>
+													<option name="currentSalaryMin" value="15000-20000">15000-20000</option>
+													<option name="currentSalaryMin" value="20000-25000">20000-25000</option>
+													<option name="currentSalaryMin" value="25000-30000">25000-30000</option>
+													<option name="currentSalaryMin" value="30000-40000">30000-40000</option>
+													<option name="currentSalaryMin" value="40000-50000">40000-50000</option>
+													<option name="currentSalaryMin" value="50000-60000">50000-60000</option>
+													<option name="currentSalaryMin" value="60000-80000">60000-80000</option>
+													<option name="currentSalaryMin" value="80000-100000">80000-100000</option>
+													<option name="currentSalaryMin" value="10000-150000">10000-150000</option>
+													<option name="currentSalaryMin" value=">150000"> > 150000</option>
+												</select>
 					 						</div>
 					 					</div>
-					 					<div class="col-lg-3">
-					 						<span class="pf-title">Max</span>
-					 						<div class="pf-field">
-					 							<input type="text" name="currentSalaryMax" value='<%=data.currentSalaryMax%>' placeholder="30K" />
-					 						</div>
-					 					</div>
-					 					<div class="col-lg-3">
+					 					<div class="col-lg-6">
 					 						<span class="pf-title">Expected Salary($) min</span>
 					 						<div class="pf-field">
-					 							<input type="text" name="expectedSalMin" value='<%=data.expectedSalMin%>' placeholder="30k" />
-					 						</div>
-					 					</div>
-					 					<div class="col-lg-3">
-					 						<span class="pf-title">Max</span>
-					 						<div class="pf-field">
-					 							<input type="text" name="expectedSalMax" value='<%=data.expectedSalMax%>' placeholder="40K" />
-					 						</div>
+<!--					 							<input type="text" name="expectedSalMin" value='<%=data.expectedSalMin%>' placeholder="30k" />-->
+												<select data-placeholder="Expected Salary" class="chosen" >
+													<option name="expectedSalMin" value="0-5000" <% if(data.expectedSalMin == '0-5000'){%> selected <% } %> >0 - 5000</option>
+													<option name="expectedSalMin" value="5000-10000" <% if(data.expectedSalMin == '0-5000'){%> selected <% } %> >5000-10000</option>
+													<option name="expectedSalMin" value="10000-15000" <% if(data.expectedSalMin == '0-5000'){%> selected <% } %> >10000-15000</option>
+													<option name="expectedSalMin" value="15000-20000" <% if(data.expectedSalMin == '0-5000'){%> selected <% } %> >15000-20000</option>
+													<option name="expectedSalMin" value="20000-25000" <% if(data.expectedSalMin == '0-5000'){%> selected <% } %> >20000-25000</option>
+													<option name="expectedSalMin" value="25000-30000" <% if(data.expectedSalMin == '0-5000'){%> selected <% } %> >25000-30000</option>
+													<option name="expectedSalMin" value="30000-40000" <% if(data.expectedSalMin == '30000-40000'){%> selected <% } %> >30000-40000</option>
+													<option name="expectedSalMin" value="40000-50000" <% if(data.expectedSalMin == '40000-50000'){%> selected <% } %> >40000-50000</option>
+													<option name="expectedSalMin" value="50000-60000" <% if(data.expectedSalMin == '50000-60000'){%> selected <% } %> >50000-60000</option>
+													<option name="expectedSalMin" value="60000-80000" <% if(data.expectedSalMin == '60000-80000'){%> selected <% } %> >60000-80000</option>
+													<option name="expectedSalMin" value="80000-100000 <% if(data.expectedSalMin == '80000-100000'){%> selected <% } %> ">80000-100000</option>
+													<option name="expectedSalMin" value="10000-150000 <% if(data.expectedSalMin == '100000-150000'){%> selected <% } %> ">100000-150000</option>
+													<option name="expectedSalMin" value=">150000"  <% if(data.expectedSalMin == '> 150000'){%> selected <% } %> > > 150000</option>
+												</select>
+
+											</div>
 					 					</div>
 					 					<div class="col-lg-6">
 					 						<span class="pf-title">Education Levels</span>
@@ -288,10 +207,7 @@
 					 						<span class="pf-title">Languages</span>					 						
 					 						<div class="pf-field">
 						 						<div class="pf-field">
-						 							<select data-placeholder="Please Select Specialism" class="chosen">
-														<option name="languages">English</option>
-														<option name="languages">German</option>
-													</select>
+						 							<input placeholder="Please Select Specialism" type="text" class="" name="languages" />
 						 						</div>
 											</div>
 					 					</div>
@@ -386,56 +302,23 @@
 												<input type="text" name="userName" value="<%=data.userName%>"  placeholder="Ali Jawan" />
 											</div>
 										</div>
-					 					<div class="col-lg-6">
+										<div class="col-lg-4">
+											<span class="pf-title">City</span>
+											<div class="pf-field">
+												<input name="city" placeholder="Enter City"  type="text" />
+											</div>
+										</div>
+					 					<div class="col-lg-4">
 					 						<span class="pf-title">Country</span>
 					 						<div class="pf-field">
 					 							<select data-placeholder="Please Select Specialism" name="country" class="chosen">
-													<option name="country" value="<%=data.country%>"selected ><%=data.country%></option>
-													<option name="country" value="India">India</option>
-													<option name="country" value="Pakistan">Pakistan</option>
-													<option name="country" value="Dubai">Dubai</option>
-													<option name="country" value="America">America</option>
+													<option name="country" value="India" 	<% if(data.country == 'India'){ %> selected <% } %>>India</option>
+													<option name="country" value="Pakistan" <% if(data.country == 'Pakistan'){ %> selected <% } %>>Pakistan</option>
+													<option name="country" value="Dubai" 	<% if(data.country == 'Dubai'){ %> selected <% } %>>Dubai</option>
+													<option name="country" value="America" 	<% if(data.country == 'America'){ %> selected <% } %>>America</option>
 												</select>
 					 						</div>
 					 					</div>
-					 					<div class="col-lg-6">
-					 						<span class="pf-title">City</span>
-					 						<div class="pf-field">
-					 							<select data-placeholder="Please Select Specialism" name="city" class="chosen">
-													<option name="city" value="<%=data.city%>" selected><%=data.city%></option>
-													<option name="city" value="somecity">SomeCity</option>
-													<option name="city" value="somecity">SomeCity</option>
-													<option name="city" value="somecity">SomeCity</option>
-												</select>
-					 						</div>
-					 					</div>
-					 					<!-- <div class="col-lg-6">
-					 						<span class="pf-title">Find On Map</span>
-					 						<div class="pf-field">
-					 							<input type="text" required placeholder="Collins Street West, Victoria 8007, Australia." />
-					 						</div>
-					 					</div>
-					 					<div class="col-lg-3">
-					 						<span class="pf-title">Latitude</span>
-					 						<div class="pf-field">
-					 							<input type="text" required placeholder="41.1589654" />
-					 						</div>
-					 					</div>
-					 					<div class="col-lg-3">
-					 						<span class="pf-title">Longitude</span>
-					 						<div class="pf-field">
-					 							<input type="text" required placeholder="21.1589654" />
-					 						</div>
-					 					</div>
-					 					<div class="col-lg-12">
-					 						<a href="#" title="" class="srch-lctn">Search Location</a>
-					 					</div> -->
-					 					<!-- <div class="col-lg-12">
-					 						<span class="pf-title">Maps</span>
-					 						<div class="pf-map">
-					 							<div id="map_div"></div>
-					 						</div>
-					 					</div> -->
 					 					<div class="col-lg-12">
 					 						<button type="submit">Update</button>
 					 					</div>
@@ -448,117 +331,11 @@
 			</div>
 		</div>
 	</section>
-
-	<footer>
-		<div class="block">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 column">
-						<div class="widget">
-							<div class="about_widget">
-								<div class="logo">
-									<a href="#" title=""><img src="http://placehold.it/178x40" alt="" /></a>
-								</div>
-								<span>Collin Street West, Victor 8007, Australia.</span>
-								<span>+1 246-345-0695</span>
-								<span>info@jobhunt.com</span>
-								<div class="social">
-									<a href="#" title=""><i class="fa fa-facebook"></i></a>
-									<a href="#" title=""><i class="fa fa-twitter"></i></a>
-									<a href="#" title=""><i class="fa fa-linkedin"></i></a>
-									<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-									<a href="#" title=""><i class="fa fa-behance"></i></a>
-								</div>
-							</div><!-- About Widget -->
-						</div>
-					</div>
-					<div class="col-lg-4 column">
-						<div class="widget">
-							<h3 class="footer-title">Frequently Asked Questions</h3>
-							<div class="link_widgets">
-								<div class="row">
-									<div class="col-lg-6">
-										<a href="#" title="">Privacy & Seurty </a>
-										<a href="#" title="">Terms of Serice</a>
-										<a href="#" title="">Communications </a>
-										<a href="#" title="">Referral Terms </a>
-										<a href="#" title="">Lending Licnses </a>
-										<a href="#" title="">Disclaimers </a>	
-									</div>
-									<div class="col-lg-6">
-										<a href="#" title="">Support </a>
-										<a href="#" title="">How It Works </a>
-										<a href="#" title="">For Employers </a>
-										<a href="#" title="">Underwriting </a>
-										<a href="#" title="">Contact Us</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2 column">
-						<div class="widget">
-							<h3 class="footer-title">Find Jobs</h3>
-							<div class="link_widgets">
-								<div class="row">
-									<div class="col-lg-12">
-										<a href="#" title="">US Jobs</a>	
-										<a href="#" title="">Canada Jobs</a>	
-										<a href="#" title="">UK Jobs</a>	
-										<a href="#" title="">Emplois en Fnce</a>	
-										<a href="#" title="">Jobs in Deuts</a>	
-										<a href="#" title="">Vacatures China</a>	
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 column">
-						<div class="widget">
-							<div class="download_widget">
-								<a href="#" title=""><img src="http://placehold.it/230x65" alt="" /></a>
-								<a href="#" title=""><img src="http://placehold.it/230x65" alt="" /></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="bottom-line">
-			<span>© 2018 Jobhunt All rights reserved. Design by Creative Layers</span>
-			<a href="#scrollup" class="scrollup" title=""><i class="la la-arrow-up"></i></a>
-		</div>
-	</footer>
-
+	<%- include('includes/footer', data); %>
 </div>
 
-<div class="profile-sidebar">
-	<span class="close-profile"><i class="la la-close"></i></span>
-	<div class="can-detail-s">
-		<div class="cst"><img src="http://placehold.it/145x145" alt="" /></div>
-		<h3><%=data.fullName%></h3>
-		<span><i><%=data.jobTitle%></i> </span>
-		<p><%=data.email%></p>
-		<p>Member Since, <%=data.created_at%></p>
-		<p><i class="la la-map-marker"></i><%=data.country%> / <%=data.city%></p>
-	</div>	
-</div><!-- Profile Sidebar -->
-
-
-<script src="/js/jquery.min.js" type="text/javascript"></script>
-<script src="/js/modernizr.js" type="text/javascript"></script>
-<script src="/js/script.js" type="text/javascript"></script>
-<script src="/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/js/wow.min.js" type="text/javascript"></script>
-<script src="/js/slick.min.js" type="text/javascript"></script>
-<script src="/js/parallax.js" type="text/javascript"></script>
-<script src="/js/select-chosen.js" type="text/javascript"></script>
-<script src="/js/jquery.scrollbar.min.js" type="text/javascript"></script>
-<script src="/js/circle-progress.min.js" type="text/javascript"></script>
-<script src="/js/tag.js" type="text/javascript"></script>
-<script src="/js/maps3.js" type="text/javascript"></script>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCYc537bQom7ajFpWE5sQaVyz1SQa9_tuY&sensor=true&libraries=places"></script>
-
+<%- include('includes/profile_sidebar', data); %>
+<%- include('includes/scripts', data); %>
 
 </body>
 </html>

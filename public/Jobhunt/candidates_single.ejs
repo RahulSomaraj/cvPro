@@ -1,89 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Jobhunt</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="CreativeLayers">
-
-	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css" />
-	<link rel="stylesheet" href="/css/icons.css">
-	<link rel="stylesheet" href="/css/animate.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="/css/responsive.css" />
-	<link rel="stylesheet" type="text/css" href="/css/chosen.css" />
-	<link rel="stylesheet" type="text/css" href="/css/colors/colors.css" />
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-	
-</head>
+<%- include('includes/header', data); %>
 <body>
-
-<div class="page-loading">
-	<img src="images/loader.gif" alt="" />
-	<span>Skip Loader</span>
-</div>
-
+<%- include('includes/loader', data); %>
 <div class="theme-layout" id="scrollup">
 	
-	<div class="responsive-header">
-		<div class="responsive-menubar">
-			<div class="res-logo"><a href="index.html" title=""><img src="http://placehold.it/178x40" alt="" /></a></div>
-			<div class="menu-resaction">
-				<div class="res-openmenu">
-					<img src="images/icon.png" alt="" /> Menu
-				</div>
-				<div class="res-closemenu">
-					<img src="images/icon2.png" alt="" /> Close
-				</div>
-			</div>
-		</div>
-		<div class="responsive-opensec">
-			<div class="btn-extars">
-				<a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
-				<ul class="account-btns">
-					<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
-				</ul>
-			</div><!-- Btn Extras -->
-			<form class="res-search">
-				<input type="text" placeholder="Job title, keywords or company name" />
-				<button type="submit"><i class="la la-search"></i></button>
-			</form>
-			<div class="responsivemenu">
-				<ul>
-					<li >
-						<a href="dashboard" title="">Home</a>							
-					</li>						
-					
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<header class="stick-top">
-		<div class="menu-sec">
-			<div class="container">
-				<div class="logo">
-					<a href="index.html" title=""><img src="http://placehold.it/178x40" alt="" /></a>
-				</div><!-- Logo -->
-				<div class="btn-extars">
-					<a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
-					<ul class="account-btns">
-						<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-						<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
-					</ul>
-				</div><!-- Btn Extras -->
-				<nav>
-				
-
-				</nav><!-- Menus -->
-			</div>
-		</div>
-	</header>
+<%- include('includes/dashboard_responsive_header', data); %>
+<%- include('includes/dashboard_responsive_header__loggedin_employeer', data); %>
 
 	<section class="overlape">
 		<div class="block no-padding">
@@ -165,15 +87,11 @@
 				 									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
 				 								</div>
 											 </div>
-											 
-
 											 <%}%>
-											 
 				 						</div>
 				 						<div class="edu-history-sec" id="experience">
 											 <h2>Work & Experience</h2>
 											<%for(i=0;i<data.resume.work.length;i++){%>
-
 				 							<div class="edu-history style2">
 				 								<i></i>
 				 								<div class="edu-hisinfo">
@@ -183,17 +101,11 @@
 				 								</div>
 											 </div>
 											 <%}%>
-
-											 
-
-
 				 						</div>
 				 						<div class="mini-portfolio" id="portfolio">
 				 							<h2>Portfolio</h2>
 				 							<div class="mp-row">
 											<%for(i=0;i<data.resume.education.length;i++){%>
-
-
 				 								<div class="mp-col">
 				 									<div class="mportolio"><img src="http://placehold.it/165x115" alt="" /><a href="#" title=""><i class="la la-search"></i></a></div>
 												 </div>
@@ -216,9 +128,6 @@
 				 						<div class="edu-history-sec" id="awards">
 											 <h2>Awards</h2>
 											 <%for(i=0;i<data.resume.awards.length;i++){%>
-
-
-											 
 				 							<div class="edu-history style2">
 				 								<i></i>
 				 								<div class="edu-hisinfo">
@@ -228,8 +137,6 @@
 				 								</div>
 											 </div>
 											 <%}%>
-
-
 				 						</div>
 				 						<div class="companyies-fol-sec">
 				 							<h2>Companies Followed By</h2>
