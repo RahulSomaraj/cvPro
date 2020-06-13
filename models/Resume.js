@@ -3,8 +3,10 @@ const { Schema } = mongoose;
 
 
 const resumeSchema = new Schema({
-    
-        basics: {
+    candidateId :{
+        type : mongoose.Types.ObjectId
+    },    
+    basics: {
           name: {
               type : String,
               default : ''

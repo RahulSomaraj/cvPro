@@ -4,8 +4,7 @@ const candidateServcie = require('../services/candidate.service');
 const userService = require('../services/user.service');
 const path = require('path');
 var resume = require(JSON.parse(JSON.stringify('../resume.json')))
-console.log(resume)
-
+const mailer = require('../services/nodemailer');
 router.use(express.json());
 
 var data ;
@@ -39,13 +38,17 @@ router.get('/coverLetter',(request,response)=>{
     response.render(path.join(__dirname,'../public/JobHunt/candidates_cv_cover_letter.ejs'),{data : data});
 });
 router.get('/single',(request,response)=>{
-    console.log(resume);
     response.render(path.join(__dirname,'../public/JobHunt/candidates_single.ejs'),{data : {...data,resume:{...resume}}});
+});
+router.get('/downloadresume',(request,response)=>{
     response.download(path.join(__dirname,'resume.pdf'));
+    response.redirect("/single");
 });
 
-
-
+router.get('/mailAction',(request,response)=>{
+    mailer.mail(JSON.parse(JSON.stringify(request.body)))
+    response.redirect("/single");
+});
 
 
 router.post('/updatecandidate',(request,response)=>{
