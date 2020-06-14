@@ -34,6 +34,10 @@ router.get('post-job', async (request,response) => {
     response.render(path.join(__dirname,'../public/JobHunt/employer_post_job.ejs'), {data : {...data, resume:{...resume}}});
 });
 
+router.get('/change_password', async (request,response) => {
+    var data = await get_context_data(request);
+    response.render(path.join(__dirname,'../public/JobHunt/employer_change_password.ejs'), {data : data});
+});
 
 
 module.exports =  router;
