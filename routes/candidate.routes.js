@@ -1,11 +1,14 @@
+
 const express = require('express');
 const router = express.Router();
 const candidateServcie = require('../services/candidate.service');
 const userService = require('../services/user.service');
 const path = require('path');
-var resume = require(JSON.parse(JSON.stringify('../resume.json')))
+const resumeService =  require("../services/resume.service");
 const mailer = require('../services/nodemailer');
 router.use(express.json());
+
+var resume = require(JSON.parse(JSON.stringify('../resume.json')));
 
 
 async function get_context_data(request, response) {
@@ -31,6 +34,8 @@ router.get('/list', async (request,response) => {
 router.get('/single', async (request,response) => {
     var data = await get_context_data(request, response);
     if (data){
+        var resume_ = await resumeService.findOne({candidateId:data._id});
+        data.resume = resume_;
         response.render(path.join(__dirname,'../public/JobHunt/candidates_single.ejs'), {data : {...data,resume:{...resume}}});
     }
 });
@@ -46,7 +51,7 @@ router.get('/profile', async (request,response) => {
 
 router.get('/dashboard',async (request,response) => {
     console.log("session in dashborad");
-    var userId = request.session
+    var {userId} = request.session
     var data = await get_context_data(request, response);
     if (data){
         response.render(path.join(__dirname,'../public/JobHunt/candidates_dashboard'), {data : data});
@@ -62,7 +67,9 @@ router.get('/change_password', async (request, response) => {
 
 router.get('/myresume', async (request, response) => {
     var data = await get_context_data(request, response);
-    if (data){
+    if (data) {
+        var resume_ = await resumeService.findOne({candidateId:data._id});
+        data.resume = JSON.stringify(resume_.toJSON());
         response.render(path.join(__dirname,'../public/JobHunt/candidates_my_resume.ejs'), {data : data});
     }
 });

@@ -25,15 +25,14 @@ async function get_context_data(request, response) {
 
 
 router.get('/', async (request, response) => {
-    let user =  await userService.findOne({_id : request.session.userId})
+    let data =  await userService.findOne({_id : request.session.userId})
 
     var responsetoclient={
-        loginstatus : user ? user: false,
+        loginstatus : data ? data: false,
         forgotPassword : false
     }
-    request.session.userId = data._id;
-    console.log(data)
     if (data){
+        request.session.userId = data._id;
         if(data.userType === '1'){
             response.redirect('candidate/dashboard');
         }else{
@@ -41,7 +40,7 @@ router.get('/', async (request, response) => {
         }
         return null;
     }
-    response.render(__dirname + '/public/Jobhunt/index', {
+    response.render(__dirname + '/../public/Jobhunt/index.ejs', {
         data : {...responsetoclient},
         request : request,
         response : response
