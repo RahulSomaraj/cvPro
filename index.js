@@ -18,15 +18,27 @@ var cookieParser = require('cookie-parser')
 
 //app starts over here 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+app.use('/user',userRoutes);
+app.use('/candidate',candidateRoutes);
+app.use('/employer',employerRoutes);
+app.use('/',loginRoutes);
+
+
+
 // app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public/Jobhunt')));
 app.set('views', path.join(__dirname, 'public/Jobhunt'));
 app.set('view engine', 'ejs');
 // parse application/json
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+
 app.use(cookieParser());
 app.use(session({
+    name:'sid',
     secret: 'JobCvPro',
     resave: false,
     saveUninitialized: true,
@@ -40,10 +52,6 @@ app.use(session({
 //variables start over here
 const PORT = process.env.PORT || 3000;
 
-app.use('/user',userRoutes);
-app.use('/candidate',candidateRoutes);
-app.use('/employer',employerRoutes);
-app.use('/',loginRoutes);
 
 
 app.get('/',(request,response)=>{
