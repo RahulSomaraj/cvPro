@@ -62,7 +62,7 @@ router.post('/forgotPassword',(request,response)=>{
 
 });
 
-router.get('/logout',(request,response)=>{
+router.get('/logout', (request,response)=>{
     console.log("logout")
     response.clearCookie('userId');
     response.redirect('/');

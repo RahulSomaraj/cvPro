@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<%- include('includes/header', data); %>
+<body>
+<%- include('includes/loader', data); %>
+<div class="theme-layout" id="scrollup">
+    <%- include('includes/dashboard_responsive_header', data); %>
+    <%- include('includes/dashboard_responsive_header__loggedin', data); %>
+    <%- include('includes/dashboard_overlape', data); %>
+
+    <section>
+        <div class="block remove-top">
+            <div class="container">
+                <div class="row no-gape">
+                    <%- include('includes/dashboard__sidebar__menu', data); %>
+
+                    <div class="col-lg-9 column">
+                        <div class="padding-left">
+                            <div class="manage-jobs-sec">
+                                <div class="border-title"><h3>Shortlisted jobs</h3></div>
+                                <div class="job-listing wtabs">
+                                    <div class="job-title-sec">
+                                        <div class="c-logo"> <img src="http://placehold.it/98x51" alt="" /> </div>
+                                        <h3><a href="#" title="">Web Designer / Developer</a></h3>
+                                        <span>Massimo Artemisistator</span>
+                                        <div class="job-lctn">November 6, 2017</div>
+                                    </div>
+                                    <div class="job-list-del">
+                                        <a href="#" title=""><i class="la la-trash-o"></i></a>
+                                    </div>
+                                </div><!-- Job -->
+                                <div class="job-listing wtabs">
+                                    <div class="job-title-sec">
+                                        <div class="c-logo"> <img src="http://placehold.it/98x51" alt="" /> </div>
+                                        <h3><a href="#" title="">Web Designer / Developer</a></h3>
+                                        <span>Massimo Artemisistator</span>
+                                        <div class="job-lctn">November 6, 2017</div>
+                                    </div>
+                                    <div class="job-list-del">
+                                        <a href="#" title=""><i class="la la-trash-o"></i></a>
+                                    </div>
+                                </div><!-- Job -->
+                                <div class="job-listing wtabs">
+                                    <div class="job-title-sec">
+                                        <div class="c-logo"> <img src="http://placehold.it/98x51" alt="" /> </div>
+                                        <h3><a href="#" title="">Web Designer / Developer</a></h3>
+                                        <span>Massimo Artemisistator</span>
+                                        <div class="job-lctn">November 6, 2017</div>
+                                    </div>
+                                    <div class="job-list-del">
+                                        <a href="#" title=""><i class="la la-trash-o"></i></a>
+                                    </div>
+                                </div><!-- Job -->
+                                <div class="job-listing wtabs">
+                                    <div class="job-title-sec">
+                                        <div class="c-logo"> <img src="http://placehold.it/98x51" alt="" /> </div>
+                                        <h3><a href="#" title="">Web Designer / Developer</a></h3>
+                                        <span>Massimo Artemisistator</span>
+                                        <div class="job-lctn">November 6, 2017</div>
+                                    </div>
+                                    <div class="job-list-del">
+                                        <a href="#" title=""><i class="la la-trash-o"></i></a>
+                                    </div>
+                                </div><!-- Job -->
+                                <div class="job-listing wtabs">
+                                    <div class="job-title-sec">
+                                        <div class="c-logo"> <img src="http://placehold.it/98x51" alt="" /> </div>
+                                        <h3><a href="#" title="">Web Designer / Developer</a></h3>
+                                        <span>Massimo Artemisistator</span>
+                                        <div class="job-lctn">November 6, 2017</div>
+                                    </div>
+                                    <div class="job-list-del">
+                                        <a href="#" title=""><i class="la la-trash-o"></i></a>
+                                    </div>
+                                </div><!-- Job -->
+                                <div class="job-listing wtabs">
+                                    <div class="job-title-sec">
+                                        <div class="c-logo"> <img src="http://placehold.it/98x51" alt="" /> </div>
+                                        <h3><a href="#" title="">Web Designer / Developer</a></h3>
+                                        <span>Massimo Artemisistator</span>
+                                        <div class="job-lctn">November 6, 2017</div>
+                                    </div>
+                                    <div class="job-list-del">
+                                        <a href="#" title=""><i class="la la-trash-o"></i></a>
+                                    </div>
+                                </div><!-- Job -->
+                                <div class="job-listing wtabs">
+                                    <div class="job-title-sec">
+                                        <div class="c-logo"> <img src="http://placehold.it/98x51" alt="" /> </div>
+                                        <h3><a href="#" title="">Web Designer / Developer</a></h3>
+                                        <span>Massimo Artemisistator</span>
+                                        <div class="job-lctn">November 6, 2017</div>
+                                    </div>
+                                    <div class="job-list-del">
+                                        <a href="#" title=""><i class="la la-trash-o"></i></a>
+                                    </div>
+                                </div><!-- Job -->
+                                <div class="pagination">
+                                    <ul>
+                                        <li @click="load_mode()" class="next"><a href="javascript:void(0)">Load Mode <i class="la la-long-arrow-down"></i></a></li>
+                                    </ul>
+                                </div>
+                                <!-- Pagination -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('includes/footer', data); %>
+
+
+</div>
+
+
+<%- include('includes/profile_sidebar', data); %>
+<%- include('includes/scripts', data); %>
+</body>
+</html>
+

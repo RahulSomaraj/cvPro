@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<%- include('includes/header', data); %>
+<body>
+<%- include('includes/loader', data); %>
+<div class="theme-layout" id="scrollup">
+    <%- include('includes/dashboard_responsive_header', data); %>
+    <%- include('includes/dashboard_responsive_header__loggedin', data); %>
+    <%- include('includes/dashboard_overlape', data); %>
+
+    <section>
+        <div class="block no-padding">
+            <div class="container">
+                <div class="row no-gape">
+                    <%- include('includes/dashboard__sidebar__menu', data); %>
+
+                    <div class="col-lg-9 column">
+                        <div class="padding-left">
+                            <div class="manage-jobs-sec">
+                                <h3>Job Alerts</h3>
+                                <table class="alrt-table">
+                                    <thead>
+                                    <tr>
+                                        <td>Alert Details</td>
+                                        <td class="text-right">Email Frequency</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="table-list-title">
+                                                <h3><a href="#" title="">Test Title</a></h3>
+                                                <span>Search Keywords: 2, 60, Crawley RH10 8XH, United Kingdom</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <ul class="action_job">
+                                                <li><span>Delete</span><a href="#" title=""><i class="la la-trash-o"></i></a></li>
+                                            </ul>
+                                            <span>Never</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="table-list-title">
+                                                <h3><a href="#" title="">Test Title</a></h3>
+                                                <span>Search Keywords: 2, 60, Crawley RH10 8XH, United Kingdom</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <ul class="action_job">
+                                                <li><span>Delete</span><a href="#" title=""><i class="la la-trash-o"></i></a></li>
+                                            </ul>
+                                            <span>Never</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="table-list-title">
+                                                <h3><a href="#" title="">Test Title</a></h3>
+                                                <span>Search Keywords: 2, 60, Crawley RH10 8XH, United Kingdom</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <ul class="action_job">
+                                                <li><span>Delete</span><a href="#" title=""><i class="la la-trash-o"></i></a></li>
+                                            </ul>
+                                            <span>Never</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="table-list-title">
+                                                <h3><a href="#" title="">Test Title</a></h3>
+                                                <span>Search Keywords: 2, 60, Crawley RH10 8XH, United Kingdom</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <ul class="action_job">
+                                                <li><span>Delete</span><a href="#" title=""><i class="la la-trash-o"></i></a></li>
+                                            </ul>
+                                            <span>Never</span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="pagination">
+                            <ul>
+                                <li @click="load_mode()" class="next"><a href="javascript:void(0)">Load Mode <i class="la la-long-arrow-down"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <%- include('includes/footer', data); %>
+
+
+</div>
+
+
+<%- include('includes/profile_sidebar', data); %>
+<%- include('includes/scripts', data); %>
+</body>
+</html>
+
