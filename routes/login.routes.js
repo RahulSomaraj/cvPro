@@ -11,23 +11,28 @@ let bcrypt = require("bcrypt");
 router.use(express.json());
 
 router.post('/login',async (request,response)=>{
+
     console.log(JSON.parse(JSON.stringify(request.body)))
+
     loginService.login(JSON.parse(JSON.stringify(request.body))).then((data)=>{
         if(!!data && !!Object.keys(data).length){
             request.session.userId = data._id;
-            response.redirect('candidate/dashboard');
-            // response.render(path.join(__dirname,'../public/Jobhunt/candidates_dashboard.ejs'),{data : {responsetoclient,...JSON.parse(JSON.stringify(data))}})
+            if(data.userType === 1){
+                response.redirect('candidate/dashboard');
+            }else{
+                response.redirect('employer/dashboard');
+            }
         }else{
-            response.render(path.join(__dirname,'../public/Jobhunt/index.ejs'),{data :data})        
+            response.render(path.join(__dirname,'../public/Jobhunt/index.ejs'),{data :data})
         }
     })
     .catch((err)=>{
         console.log(err);
-        response.render(path.join(__dirname,'../public/Jobhunt/index.ejs'));
+        response.render(path.join(__dirname,'../public/Jobhunt/index.ejs', {data :null}));
     })
 });
 
-router.post('/forgotPassword',(request,response)=>{
+router.post('/forgotPassword', (request, response)=>{
     var data = {
         forgotPassword : true
     }
