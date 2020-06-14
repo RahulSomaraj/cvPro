@@ -12,6 +12,8 @@ async function get_context_data(request) {
     return await userService.findOne({_id : request.cookies['userId']})
 }
 
+
+
 router.get('/profile', async (request,response) => {
     console.log(request.cookies['userId']);
     var data = await get_context_data(request);
