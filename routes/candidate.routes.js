@@ -15,6 +15,20 @@ async function get_context_data(request) {
     return await userService.findOne({_id : request.session.userId})
 }
 
+
+/*
+router.get('/list', async (request,response) => {
+    var data = await get_context_data(request);
+    response.render(path.join(__dirname,'../public/JobHunt/candidates_list.ejs'), {data : {...data,resume:{...resume}}});
+});
+*/
+
+router.get('/single', async (request,response) => {
+    var data = await get_context_data(request);
+    response.render(path.join(__dirname,'../public/JobHunt/candidates_single.ejs'), {data : {...data,resume:{...resume}}});
+});
+
+
 router.get('/profile', async (request,response) => {
     console.log(request.session.userId);
     var data = await get_context_data(request);
@@ -56,11 +70,6 @@ router.get('/jobAlert', async (request, response) => {
 router.get('/coverLetter', async (request,response) => {
     var data = await get_context_data(request);
     response.render(path.join(__dirname,'../public/JobHunt/candidates_cv_cover_letter.ejs'), {data : data});
-});
-
-router.get('/single', async (request,response) => {
-    var data = await get_context_data(request);
-    response.render(path.join(__dirname,'../public/JobHunt/candidates_single.ejs'), {data : {...data,resume:{...resume}}});
 });
 
 router.get('/downloadresume', async (request,response) => {
