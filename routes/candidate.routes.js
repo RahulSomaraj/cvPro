@@ -83,10 +83,9 @@ router.get('/mailAction', async (request, response) => {
 });
 
 router.post('/updatecandidate', async  (request, response)=>{
-    console.log(request.cookies['userId']);
     var obj = JSON.parse(JSON.stringify(request.body))
     Object.keys(obj).forEach(key => (obj[key] !== "" ||obj[key]) ? obj[key] = obj[key] : delete obj[key] );
-    userService.update({_id : request.cookies['userId'],...obj}).then((data)=>{
+    userService.update({_id : request.session.userId,...obj}).then((data)=>{
         console.log(data)
         response.render(path.join(__dirname,'../public/JobHunt/candidates_profile.ejs'),{data:data});
     }).catch((err)=>{

@@ -17,7 +17,8 @@ router.post('/login',async (request,response)=>{
     loginService.login(JSON.parse(JSON.stringify(request.body))).then((data)=>{
         if(!!data && !!Object.keys(data).length){
             request.session.userId = data._id;
-            if(data.userType === 1){
+            console.log(data)
+            if(data.userType == 1){
                 response.redirect('candidate/dashboard');
             }else{
                 response.redirect('employer/dashboard');
@@ -61,7 +62,7 @@ router.post('/forgotPassword', (request, response)=>{
 
 router.get('/logout', (request,response)=>{
     console.log("logout")
-    response.clearCookie('userId');
+    request.session.destroy();
     response.redirect('/');
 });
 

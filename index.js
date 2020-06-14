@@ -19,7 +19,7 @@ app.use(session({
     secret: 'JobCvPro-4376vqo37t4b57oa2vt4viuaywgze4ti74',
     resave: false,
     saveUninitialized: true,
-    // cookie: { secure: true ,maxAge: 86400000}
+    cookie: {maxAge: 86400000}
 }))
 
 //intalize routes
