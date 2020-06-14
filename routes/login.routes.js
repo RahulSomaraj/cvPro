@@ -10,6 +10,44 @@ let bcrypt = require("bcrypt");
 
 router.use(express.json());
 
+
+async function get_context_data(request, response) {
+    var { userId } = request.session
+    console.log(request.session)
+    console.log(userId)
+    let user =  await userService.findOne({_id : request.session.userId})
+    if (!user) {
+        response.redirect('/');
+        return null;
+    }
+    return user
+}
+
+
+router.get('/', async (request, response) => {
+    let user =  await userService.findOne({_id : request.session.userId})
+
+    var responsetoclient={
+        loginstatus : user ? user: false,
+        forgotPassword : false
+    }
+    request.session.userId = data._id;
+    console.log(data)
+    if (data){
+        if(data.userType === '1'){
+            response.redirect('candidate/dashboard');
+        }else{
+            response.redirect('employer/dashboard');
+        }
+        return null;
+    }
+    response.render(__dirname + '/public/Jobhunt/index', {
+        data : {...responsetoclient},
+        request : request,
+        response : response
+    });
+});
+
 router.post('/login',async (request,response)=>{
 
     console.log(JSON.parse(JSON.stringify(request.body)))
@@ -18,7 +56,7 @@ router.post('/login',async (request,response)=>{
         if(!!data && !!Object.keys(data).length){
             request.session.userId = data._id;
             console.log(data)
-            if(data.userType == 1){
+            if(data.userType === '1'){
                 response.redirect('candidate/dashboard');
             }else{
                 response.redirect('employer/dashboard');
