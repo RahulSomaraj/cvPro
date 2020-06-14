@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-header">
-                        <h3>Hello  <%=data.fullName%></h3>
+                        <h3>Hello  <% if(data && data.fullName) { %>  <%= data.fullName || "User" %>  <% }  %></h3>
                     </div>
                 </div>
             </div>
