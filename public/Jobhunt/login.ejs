@@ -1,31 +1,7 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Jobhunt</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="CreativeLayers">
-
-	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css" />
-	<link rel="stylesheet" href="css/icons.css">
-	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link rel="stylesheet" type="text/css" href="css/responsive.css" />
-	<link rel="stylesheet" type="text/css" href="css/chosen.css" />
-	<link rel="stylesheet" type="text/css" href="css/colors/colors.css" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-	
-</head>
+	<%- include('includes/header', data); %>
 <body>
-
-<div class="page-loading">
-	<img src="images/loader.gif" alt="" />
-	<span>Skip Loader</span>
-</div>
+<%- include('includes/loader', data); %>
 
 <div class="theme-layout" id="scrollup">
 	
@@ -497,16 +473,8 @@
 	</div>
 </div><!-- SIGNUP POPUP -->
 
-<script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/modernizr.js" type="text/javascript"></script>
-<script src="js/script.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/wow.min.js" type="text/javascript"></script>
-<script src="js/slick.min.js" type="text/javascript"></script>
-<script src="js/parallax.js" type="text/javascript"></script>
-<script src="js/select-chosen.js" type="text/javascript"></script>
-<script src="js/jquery.scrollbar.min.js" type="text/javascript"></script>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCYc537bQom7ajFpWE5sQaVyz1SQa9_tuY&sensor=true&libraries=places"></script>
+
+<%- include('includes/scripts', data); %>
 <script src="js/maps2.js" type="text/javascript"></script>
 
 </body>

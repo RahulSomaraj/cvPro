@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html>
 <%- include('includes/header', data); %>
 <body>
-
 <%- include('includes/loader', data); %>
-
 <div class="theme-layout" id="scrollup">
 
 	<%- include('includes/dashboard_responsive_header', data); %>
+	<%- include('includes/dashboard_responsive_header__loggedin', data); %>
 	<%- include('includes/dashboard_overlape', data); %>
 
 	<section>
@@ -17,10 +15,10 @@
 					<%- include('includes/dashboard__sidebar__menu', data); %>
 					<div class="col-lg-9 column" id="vue__app">
 						<div class="padding-top mt-3  d-block float-right">
-								<div type="button" class="btn btn-primary" @click="submit_data()" >Update</div>
-								<p class="text-small text-muted d-block" style="padding-top:5px; font-size:10px; line-height: 12px">
-									** You have to update <br />to apply all changes!
-								</p>
+							<div type="button" class="btn btn-primary" @click="submit_data()" >Update</div>
+							<p class="text-small text-muted d-block" style="padding-top:5px; font-size:10px; line-height: 12px">
+								** You have to update <br />to apply all changes!
+							</p>
 						</div>
 						<div class="padding-left">
 							<div class="manage-jobs-sec">
@@ -59,7 +57,7 @@
 												<span v-if="!candidate.editable">Edit</span>
 												<span v-else=>Save</span>
 												<a href="javascript:void(0)" title="">
-													<i :class="(candidate.editable) ?'la la-close':'la la-pencil'" id="editeducationbutton"></i>
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'" id="editeducationbutton"></i>
 												</a>
 											</li>
 											<li @click="remove_candidate_dashboard(candidate.id)">
@@ -71,7 +69,6 @@
 										</ul>
 									</div>
 								</div>
-
 
 								<div class="border-title">
 									<h3>Work Experience</h3>
@@ -102,7 +99,7 @@
 												<span v-if="!candidate.editable">Edit</span>
 												<span v-else=>Save</span>
 												<a href="javascript:void(0)" title="">
-													<i :class="(candidate.editable) ?'la la-close':'la la-pencil'" id="editeducationbutton"></i>
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'" id="editeducationbutton"></i>
 												</a>
 											</li>
 											<li @click="remove_work_experience(candidate.id)">
@@ -166,7 +163,7 @@
 											<div v-else>
 												<input type="range" class="form-control"
 													   style="margin-top:-12px"
-													   v-model="candidate.percentage" :value="candidate.percentage"  />
+													   v-model="candidate.percentage" />
 												<span>{{ candidate.percentage }}%</span>
 											</div>
 										</div>
@@ -175,7 +172,7 @@
 												<span v-if="!candidate.editable">Edit</span>
 												<span v-else=>Save</span>
 												<a href="javascript:void(0)" title="">
-													<i :class="(candidate.editable) ?'la la-close':'la la-pencil'" id="editeducationbutton"></i>
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'" id="editeducationbutton"></i>
 												</a>
 											</li>
 											<li @click="remove_professional_skills(candidate.id)">
@@ -189,7 +186,7 @@
 								</div>
 								<div class="border-title">
 									<h3>Additional Skills</h3>
-									<a href="javascript:void(0)" title="">
+									<a href="javascript:void(0)"  @click="add_additional_skills()" title="">
 										<i class="la la-plus" id=""></i> Add Skills
 									</a>
 								</div>
@@ -210,7 +207,7 @@
 												<span v-if="!candidate.editable">Edit</span>
 												<span v-else=>Save</span>
 												<a href="javascript:void(0)" title="">
-													<i :class="(candidate.editable) ?'la la-close':'la la-pencil'" id="editeducationbutton"></i>
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'" id="editeducationbutton"></i>
 												</a>
 											</li>
 											<li @click="remove_additional_skills(candidate.id)">
@@ -237,21 +234,12 @@
 	</section>
 	<%- include('includes/footer', data); %>
 </div>
-<div class="profile-sidebar">
-	<span class="close-profile"><i class="la la-close"></i></span>
-	<div class="can-detail-s">
-		<div class="cst"><img src="http://placehold.it/145x145" alt="" /></div>
-		<h3><%=data.fullName%></h3>
-		<span><i><%=data.jobTitle%></i> </span>
-		<p><%=data.email%></p>
-		<p>Member Since, <%=data.created_at%></p>
-		<p><i class="la la-map-marker"></i><%=data.country%> / <%=data.city%></p>
-	</div>
-</div>
+<%- include('includes/profile_sidebar', data); %>
+
 <!-- Profile Sidebar -->
 <div class="view-resumesec">
 	<div class="view-resumes">
-		<span class="close-resume-popup"><i class="la la-close"></i></span>
+		<span class="close-resume-popup"><i class="la la-check"></i></span>
 		<h3>13 Times Viewed By 8 Companies.</h3>
 		<div class="job-listing wtabs">
 			<div class="job-title-sec">
@@ -293,7 +281,7 @@
 </div>
 <div class="follow-companiesec">
 	<div class="follow-companies">
-		<span class="close-follow-company"><i class="la la-close"></i></span>
+		<span class="close-follow-company"><i class="la la-check"></i></span>
 		<h3>Follow Companies.</h3>
 		<ul id="scrollbar">
 			<li>
@@ -359,18 +347,11 @@
 		</ul>
 	</div>
 </div>
-<script src="/js/jquery.min.js" type="text/javascript"></script>
+
 <script src="/js/vue.js" type="text/javascript"></script>
-<script src="/js/modernizr.js" type="text/javascript"></script>
-<script src="/js/script.js" type="text/javascript"></script>
-<script src="/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/js/wow.min.js" type="text/javascript"></script>
-<script src="/js/slick.min.js" type="text/javascript"></script>
-<script src="/js/parallax.js" type="text/javascript"></script>
-<script src="/js/select-chosen.js" type="text/javascript"></script>
-<script src="/js/jquery.scrollbar.min.js" type="text/javascript"></script>
-<script src="/js/circle-progress.min.js" type="text/javascript"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<%- include('includes/scripts', data); %>
+
 <script>
 	document.addEventListener('DOMContentLoaded', function(){
 		window.vueApp = new Vue({
@@ -522,23 +503,35 @@
 				submit_data: function (){
 					if (this.validate_data()){
 						let self = this;
+<<<<<<< HEAD
 						fetch('/api/v1/updateCandidateProfile', {
 							method: 'POST', mode: 'cors', 
 							body: JSON.stringify({candidates_dashboard: self.candidates_dashboard, 
 							work_experience: self.work_experience,
 							professional_skills:self.professional_skills,
 							additional_skills: self.additional_skills
+=======
+						fetch('/candidate/updateCandidateProfile', {
+							method: 'POST', mode: 'cors',
+							body: JSON.stringify({
+								candidates_dashboard: self.candidates_dashboard,
+								work_experience: self.work_experience,
+								professional_skills:self.professional_skills,
+								additional_skills: self.additional_skills
+>>>>>>> origin/bugfix__01
 							}),
 							headers: {
 								'Content-Type':'application/json',
 								'Accept':'application/json',
 							},
 							credentials:'include',
-						}).then(function(){
-							swal("Data Submitted!", "", "success").then(function () {
-								window.location.reload()
-							});
-						}).catch(function (e){self.handle_errors('-')})
+						}).then(function(r) { return r.json()} ).then(function(r){
+							console.log(r);
+							swal("Data Submitted!", "", "success");
+								// window.location.reload();
+						}).catch(function (e){
+							self.handle_errors('-')
+						})
 					}else{
 						this.handle_errors(fields);
 					}
