@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const loginService = require('../services/login.service')
+const userService = require('../services/user.service')
 const path = require('path');
 const mailer = require('../services/nodemailer')
 const UserModel = require('../models/User');
@@ -9,20 +10,10 @@ let bcrypt = require("bcrypt");
 
 router.use(express.json());
 
-router.post('/login',(request,response)=>{
-    console.log("request.cookies");
-    console.log(request.cookies['userId']);
-    console.log(JSON.stringify(request.body))
+router.post('/login',async (request,response)=>{
     loginService.login(JSON.parse(JSON.stringify(request.body))).then((data)=>{
-        console.log(data)
-        var responsetoclient = { 
-            loginstatus : false
-        }
         if(!!data && !!Object.keys(data).length){
-            responsetoclient = { 
-                loginstatus : true
-            }
-            response.cookie('userId', data._id, { maxAge: 86400000, httpOnly: true });
+            request.session.userId = data._id;
             response.redirect('candidate/dashboard');
             // response.render(path.join(__dirname,'../public/Jobhunt/candidates_dashboard.ejs'),{data : {responsetoclient,...JSON.parse(JSON.stringify(data))}})
         }else{

@@ -3,6 +3,8 @@ const fs = require('fs');
 
 const db = require('./db/mongoose');
 const bodyParser = require('body-parser');
+var session = require('express-session')
+
 
 db.connect();
 
@@ -24,6 +26,12 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(session({
+    secret: 'JobCvPro',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true ,maxAge: 86400000}
+  }))
 
 
 
