@@ -20,7 +20,7 @@ router.get('/dashboard',async (request,response)=>{
 router.get('/change_password',(request,response)=>{
     response.render(path.join(__dirname,'../public/JobHunt/candidates_change_password.ejs'),{data : data});
 });
-router.get('/myresume',(request,response)=>{
+router.get('/myresume',async (request,response)=>{
     var data = await userService.findOne({_id : request.cookies['userId']})
     response.render(path.join(__dirname,'../public/JobHunt/candidates_my_resume.ejs'),{data : data});
 });

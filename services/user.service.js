@@ -14,7 +14,6 @@ function findOne (query) {
 }
 
 function create (data) {  
-  console.log("data");
   return new Promise((rs, rj) => {
     const hash = bcrypt.hashSync(data.password, 10);
     data.password = hash;

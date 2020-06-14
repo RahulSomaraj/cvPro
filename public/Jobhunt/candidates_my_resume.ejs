@@ -376,7 +376,7 @@
 		window.vueApp = new Vue({
 			el: '#vue__app',
 			data : {
-				user: null,
+				// user: null,
 				dummy_id: 100100,
 				candidates_dashboard:[{
 					id: 121,
@@ -525,10 +525,10 @@
 						fetch('/api/v1/updateCandidateProfile', {
 							method: 'POST', mode: 'cors', 
 							body: JSON.stringify({candidates_dashboard: self.candidates_dashboard, 
-work_experience: self.work_experience,
-professional_skills:self.professional_skills,
-additional_skills: self.additional_skills
-                                                        }),
+							work_experience: self.work_experience,
+							professional_skills:self.professional_skills,
+							additional_skills: self.additional_skills
+							}),
 							headers: {
 								'Content-Type':'application/json',
 								'Accept':'application/json',
