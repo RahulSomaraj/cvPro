@@ -5,7 +5,7 @@
                 <a href="dashboard" title=""><img src="http://placehold.it/178x40" alt="" /></a>
             </div><!-- Logo -->
             <div class="my-profiles-sec">
-                <span><img src="http://placehold.it/50x50" alt="" /> <%=data.fullName%><i class="la la-bars"></i></span>
+                <span><img src="http://placehold.it/50x50" alt="" /> <% if(data && data.fullName) { %>  <%= data.fullName || "User" %>  <% }  %>  <i class="la la-bars"></i></span>
             </div>
             <div class="wishlist-dropsec">
                 <span><i class="la la-heart"></i><strong>3</strong></span>
