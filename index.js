@@ -36,12 +36,6 @@ app.use('/employer',employerRoutes);
 app.use('/job',jobRoutes);
 app.use('/',loginRoutes);
 
-  app.use('/',loginRoutes);
-  app.use('/user',userRoutes);
-  app.use('/candidate',candidateRoutes);
-  app.use('/employer',employerRoutes);
-
-
   // app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public/Jobhunt')));
 app.set('views', path.join(__dirname, 'public/Jobhunt'));
