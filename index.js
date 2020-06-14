@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const db = require('./db/mongoose');
 const bodyParser = require('body-parser');
-var session = require('express-session')
+var expresssession = require('express-session')
 
 
 db.connect();
@@ -22,28 +22,29 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(cookieParser());
+app.use(expresssession({
+    name:'sid',
+    secret: 'JobCvPro',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 86400000}
+  }))
 
-app.use('/user',userRoutes);
-app.use('/candidate',candidateRoutes);
-app.use('/employer',employerRoutes);
-app.use('/',loginRoutes);
 
 
+  app.use('/',loginRoutes);
+  app.use('/user',userRoutes);
+  app.use('/candidate',candidateRoutes);
+  app.use('/employer',employerRoutes);
 
-// app.use(express.json());
+
+  // app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public/Jobhunt')));
 app.set('views', path.join(__dirname, 'public/Jobhunt'));
 app.set('view engine', 'ejs');
 // parse application/json
 
-app.use(cookieParser());
-app.use(session({
-    name:'sid',
-    secret: 'JobCvPro',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true ,maxAge: 86400000}
-  }))
 
 
 

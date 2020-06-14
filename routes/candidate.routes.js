@@ -9,7 +9,9 @@ router.use(express.json());
 
 
 async function get_context_data(request) {
-    console.log(request.session.userId)
+    var { userId } = request.session
+    console.log(request.session)
+    console.log(userId)
     return await userService.findOne({_id : request.session.userId})
 }
 
@@ -22,7 +24,6 @@ router.get('/profile', async (request,response) => {
 router.get('/dashboard',async (request,response) => {
     console.log("session in dashborad");
     var userId = request.session
-    console.log(userId);
     var data = await get_context_data(request);
     response.render(path.join(__dirname,'../public/JobHunt/candidates_dashboard'), {data : data});
 });

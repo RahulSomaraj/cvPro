@@ -15,6 +15,7 @@ router.post('/login',async (request,response)=>{
     loginService.login(JSON.parse(JSON.stringify(request.body))).then((data)=>{
         if(!!data && !!Object.keys(data).length){
             request.session.userId = data._id;
+            console.log(request.session.userId);
             response.redirect('candidate/dashboard');
             // response.render(path.join(__dirname,'../public/Jobhunt/candidates_dashboard.ejs'),{data : {responsetoclient,...JSON.parse(JSON.stringify(data))}})
         }else{

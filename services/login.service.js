@@ -18,14 +18,11 @@ function login(query){
         }
         
         console.log(JSON.stringify(finalquery));
-        console.log(query)
-        
+        console.log(query)        
         
         userModel.findOne(finalquery,(err,data)=>{
             if (err) return reject(err);
             if(!!data){
-                console.log(data.password);
-                console.log(query.password);
                 query = bcrypt.compareSync(query.password, data.password);
                 if(query){
                     console.log("Login done");
