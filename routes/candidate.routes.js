@@ -9,18 +9,22 @@ router.use(express.json());
 
 
 async function get_context_data(request) {
-    return await userService.findOne({_id : request.cookies['userId']})
+    console.log(request.session.userId)
+    return await userService.findOne({_id : request.session.userId})
 }
 
 
 
 router.get('/profile', async (request,response) => {
-    console.log(request.cookies['userId']);
+    console.log(request.session.userId);
     var data = await get_context_data(request);
     response.render(path.join(__dirname,'../public/JobHunt/candidates_profile.ejs'), {data : data});
 });
 
 router.get('/dashboard',async (request,response) => {
+    console.log("session in dashborad");
+    var userId = request.session
+    console.log(userId);
     var data = await get_context_data(request);
     response.render(path.join(__dirname,'../public/JobHunt/candidates_dashboard'), {data : data});
 });
