@@ -18,7 +18,7 @@ function create (_id) {
     var data  = resumJson;
     data.candidateId = _id;
     let resume= new Resume(data);
-    resume.save((err, _Resume) => {
+    resume.save(resume,(err, _Resume) => {
       if (err) {
         return rj(err);
       }
