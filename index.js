@@ -43,17 +43,6 @@ app.set('view engine', 'ejs');
 
 
 
-app.get('/', (request, response) => {
-    var responsetoclient={
-        loginstatus : true,
-        forgotPassword : false
-    }
-    response.render(__dirname + '/public/Jobhunt/index', {
-        data : {...responsetoclient},
-        request : request,
-        response : response
-    });
-});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,()=>{

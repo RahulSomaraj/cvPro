@@ -22,14 +22,15 @@
 						</div>
 						<div class="padding-left">
 							<div class="manage-jobs-sec">
+								<!-- EDUCATION -->
 								<div class="border-title">
 									<h3>Candidates Dashboard</h3>
-									<a href="javascript:void(0)" title="" @click="add_candidate_dashboard()" >
+									<a href="javascript:void(0)" title="" @click="add_education()" >
 										<i class="la la-plus" id="addeducation"></i>
 										Add Education
 									</a>
 								</div>
-								<div class="edu-history-sec" v-key="candidate.id" v-for="candidate in candidates_dashboard">
+								<div class="edu-history-sec" v-key="candidate._id" v-for="candidate in education">
 									<div class="edu-history" >
 										<i class="la la-graduation-cap"></i>
 										<div class="edu-hisinfo" >
@@ -38,71 +39,103 @@
 												{{ candidate.institution }}
 											</h3>
 											<i>
-												<b @input="candidate.year_from=event.target.value"
-												   :contenteditable="candidate.editable"
-												>{{candidate.year_from}}</b> -
+												FROM <b @input="candidate.startDate=event.target.value"
+														:contenteditable="candidate.editable"
+												>{{candidate.startDate}}</b> TO
 												<b :contenteditable="candidate.editable"
-												   @input="candidate.year_to=event.target.value">{{candidate.year_to}}</b>
+												   @input="candidate.endDate=event.target.value">{{candidate.endDate}}</b> .
 											</i>
+											<p>GPA: <b class="d-inline"
+													   @input="candidate.gpa=event.target.value"
+													   :contenteditable="candidate.editable"> {{candidate.gpa}} </b></p>
 											<span :contenteditable="candidate.editable"
-												  @input="candidate.title=event.target.value">
-												{{candidate.title}}
+												  @input="candidate.area=event.target.value">
+												{{candidate.area}}
 											</span>
-											<p :contenteditable="candidate.editable"
-											   @input="candidate.description=event.target.value">{{candidate.description}}
-											</p>
+											<h4>Courses</h4>
+											<ol>
+												<li v-key="index" v-for="(course, index) in candidate.courses">
+													<span :contenteditable="candidate.editable"
+														  @input="course=event.target.value">{{ course }}</span>
+												</li>
+											</ol>
+											<div v-if="candidate.editable"
+												 class="btn btn-success btn-sm btn-fab"
+												 @click="candidate.courses.push('New...')">
+												<i class="la la-plus "></i> Add New</div>
 										</div>
-										<ul class="action_job">
-											<li @click="candidate.editable=!candidate.editable">
-												<span v-if="!candidate.editable">Edit</span>
-												<span v-else=>Save</span>
-												<a href="javascript:void(0)" title="">
-													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'" id="editeducationbutton"></i>
-												</a>
-											</li>
-											<li @click="remove_candidate_dashboard(candidate.id)">
-												<span>Delete</span>
-												<a href="javascript:void(0)" title="" v-show="!candidate.editable">
-													<i class="la la-trash-o"></i>
-												</a>
-											</li>
-										</ul>
+										<div>
+											<ul class="action_job">
+												<li @click="candidate.editable=!candidate.editable">
+													<span v-if="!candidate.editable">Edit</span>
+													<span v-else=>Save</span>
+													<a>
+														<i :class="(candidate.editable) ?'la la-check':'la la-pencil'" ></i>
+													</a>
+												</li>
+												<li @click="remove_education(candidate._id)">
+													<span>Delete</span>
+													<a href="javascript:void(0)" title="" v-show="!candidate.editable">
+														<i class="la la-trash-o"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</div>
 
+								<!-- WORK -->
 								<div class="border-title">
-<									<h3>Work Experience</h3>
-									<a href="javascript:void(0)" title="" @click="add_work_experience()">
-										<i class="la la-plus" id="addexperiencebutton"></i> Add Experience
+									<h3>Work Experience</h3>
+									<a href="javascript:void(0)" title="" @click="add_work()">
+										<i class="la la-plus" id="addexperiencebutton"></i> Add Work Experience
 									</a>
 								</div>
-
-								<div class="edu-history-sec" id="workexperiencediv">
-									<div class="edu-history style2"  v-key="candidate.id" v-for="candidate in work_experience">
+								<div class="edu-history-sec" >
+									<div class="edu-history style2"  v-key="candidate._id" v-for="candidate in work">
 										<i> </i>
 										<div class="edu-hisinfo">
 											<h3>
 												<i :contenteditable="candidate.editable"
-												   @input="candidate.title=event.target.value">{{ candidate.title }}</i>
+												   @input="candidate.position=event.target.value">
+													{{ candidate.position }}
+												</i>
 												<span :contenteditable="candidate.editable"
-													  @input="candidate.institution=event.target.value">{{ candidate.institution }}</span>
+													  @input="candidate.company=event.target.value">{{ candidate.company }}</span>
 											</h3>
-											<i ><span :contenteditable="candidate.editable"
-													  @input="candidate.year_from=event.target.value">{{ candidate.year_from }}</span> -
-												<span :contenteditable="candidate.editable"
-													  @input="candidate.year_to=event.target.value">{{ candidate.year_to }}</span></i>
+											<p>WEBSITE : <span :contenteditable="candidate.editable"
+															   @input="candidate.website=event.target.value">{{ candidate.website }}</span></p>
+											<i>
+												FROM <b @input="candidate.startDate=event.target.value"
+														:contenteditable="candidate.editable"
+												>{{candidate.startDate}}</b> TO
+												<b :contenteditable="candidate.editable"
+												   @input="candidate.endDate=event.target.value">{{candidate.endDate}}</b> .
+											</i>
+
 											<p :contenteditable="candidate.editable"
-											   @input="candidate.description=event.target.value"> {{ candidate.description }} </p>
+											   @input="candidate.summary=event.target.value"> {{ candidate.summary }} </p>
+											<h6>Highlights</h6>
+											<ol>
+												<li v-key="index" v-for="(highlight, index) in candidate.highlights">
+													<span :contenteditable="candidate.editable"
+														  @input="highlight=event.target.value">{{ highlight }}</span>
+												</li>
+											</ol>
+											<div v-if="candidate.editable"
+												 class="btn btn-success btn-sm btn-fab"
+												 @click="candidate.highlights.push('New...')">
+												<i class="la la-plus "></i> Add New</div>
 										</div>
 										<ul class="action_job">
 											<li  @click="candidate.editable=!candidate.editable">
 												<span v-if="!candidate.editable">Edit</span>
 												<span v-else=>Save</span>
 												<a href="javascript:void(0)" title="">
-													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'" id="editeducationbutton"></i>
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'"></i>
 												</a>
 											</li>
-											<li @click="remove_work_experience(candidate.id)">
+											<li @click="remove_work(candidate._id)">
 												<span>Delete</span>
 												<a href="javascript:void(0)" title="" v-show="!candidate.editable">
 													<i class="la la-trash-o"></i>
@@ -110,107 +143,61 @@
 											</li>
 										</ul>
 									</div>
+								</div>
 
-								</div>
-								<!-- <div class="border-title"><h3>Portfolio</h3><a href="#" title=""><i class="la la-plus"></i> Add Portfolio</a></div>
-                                <div class="mini-portfolio">
-                                    <div class="mp-row">
-                                        <div class="mp-col">
-                                            <div class="mportolio"><img src="http://placehold.it/165x115" alt="" /><a href="#" title=""><i class="la la-search"></i></a></div>
-                                            <ul class="action_job">
-                                               <li><span>Edit</span><a href="#" title=""><i class="la la-pencil"></i></a></li>
-                                               <li><span>Delete</span><a href="#" title=""><i class="la la-trash-o"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="mp-col">
-                                            <div class="mportolio"><img src="http://placehold.it/165x115" alt="" /><a href="#" title=""><i class="la la-search"></i></a></div>
-                                            <ul class="action_job">
-                                            <li><span>Edit</span><a href="#" title=""><i class="la la-pencil"></i></a></li>
-                                            <li><span>Delete</span><a href="#" title=""><i class="la la-trash-o"></i></a></li>
-                                        </ul>
-                                        </div>
-                                        <div class="mp-col">
-                                            <div class="mportolio"><img src="http://placehold.it/165x115" alt="" /><a href="#" title=""><i class="la la-search"></i></a></div>
-                                            <ul class="action_job">
-                                            <li><span>Edit</span><a href="#" title=""><i class="la la-pencil"></i></a></li>
-                                            <li><span>Delete</span><a href="#" title=""><i class="la la-trash-o"></i></a></li>
-                                        </ul>
-                                        </div>
-                                        <div class="mp-col">
-                                            <div class="mportolio"><img src="http://placehold.it/165x115" alt="" /><a href="#" title=""><i class="la la-search"></i></a></div>
-                                            <ul class="action_job">
-                                            <li><span>Edit</span><a href="#" title=""><i class="la la-pencil"></i></a></li>
-                                            <li><span>Delete</span><a href="#" title=""><i class="la la-trash-o"></i></a></li>
-                                        </ul>
-                                        </div>
-                                    </div>
-                                </div> -->
+								<!-- VOLUNTEERING -->
 								<div class="border-title">
-									<h3>Professional Skills</h3>
-									<a href="javascript:void(0)" @click="add_professional_skills()" title="">
-										<i class="la la-plus" id ="addSkillbutton"></i> Add Skills
+									<h3>Volunteering</h3>
+									<a href="javascript:void(0)" title="" @click="add_volunteer()">
+										<i class="la la-plus" ></i> Add Volunteering Experience
 									</a>
 								</div>
-								<div class="progress-sec" >
-									<div class="progress-sec with-edit"  v-key="candidate.id" v-for="candidate in professional_skills">
-										<span  :contenteditable="candidate.editable"
-											   @input="candidate.title = event.target.value">{{ candidate.title }}</span>
-										<div class="progressbar" >
-											<div class="progress" v-if="!candidate.editable"
-												 :style="{'width': candidate.percentage.toString().concat('%')}">
-												<span>{{ candidate.percentage }}%</span>
-											</div>
-											<div v-else>
-												<input type="range" class="form-control"
-													   style="margin-top:-12px"
-													   v-model="candidate.percentage" />
-												<span>{{ candidate.percentage }}%</span>
-											</div>
-										</div>
-										<ul class="action_job">
-											<li @click="candidate.editable=!candidate.editable">
-												<span v-if="!candidate.editable">Edit</span>
-												<span v-else=>Save</span>
-												<a href="javascript:void(0)" title="">
-													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'" id="editeducationbutton"></i>
-												</a>
-											</li>
-											<li @click="remove_professional_skills(candidate.id)">
-												<span>Delete</span>
-												<a href="javascript:void(0)" title="" v-show="!candidate.editable">
-													<i class="la la-trash-o"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="border-title">
-									<h3>Additional Skills</h3>
-									<a href="javascript:void(0)"  @click="add_additional_skills()" title="">
-										<i class="la la-plus" id=""></i> Add Skills
-									</a>
-								</div>
-								<div class="edu-history-sec">
-									<div class="edu-history style2" v-key="candidate.id" v-for="candidate in additional_skills">
-										<i></i>
+								<div class="edu-history-sec" >
+									<div class="edu-history style2"  v-key="candidate._id" v-for="candidate in volunteer">
+										<i> </i>
 										<div class="edu-hisinfo">
-											<h3  :contenteditable="candidate.editable">Perfect Attendance Programs</h3>
-											<i>
-												<b :contenteditable="candidate.editable" @input="candidate.year_from = event.target.value">{{ candidate.year_from }}</b> -
-												<b :contenteditable="candidate.editable" @input="candidate.year_to = event.target.value">{{ candidate.year_to }}</b>
-											</i>
-											<p :contenteditable="candidate.editable" @input="candidate.description = event.target.value">
-												{{ candidate.description }}</p>
+											<h3>
+												<i :contenteditable="candidate.editable"
+												   @input="candidate.position=event.target.value">
+													{{ candidate.position }}
+												</i>
+												<span :contenteditable="candidate.editable"
+													  @input="candidate.organization=event.target.value">{{ candidate.organization }}</span>
+											</h3>
+											<p>WEBSITE : <span :contenteditable="candidate.editable"
+															   @input="candidate.website=event.target.value">{{ candidate.website }}</span></p>
+											<p><i>
+													FROM <b @input="candidate.startDate=event.target.value"
+															:contenteditable="candidate.editable"
+													>{{candidate.startDate}}</b> TO
+													<b :contenteditable="candidate.editable"
+													   @input="candidate.endDate=event.target.value">{{candidate.endDate}}</b> .
+												</i></p>
+
+											<p><span :contenteditable="candidate.editable"
+													 @input="candidate.summary=event.target.value"> {{ candidate.summary }} </span></p>
+											<br />
+											<h6>Highlights</h6>
+											<ol class="d-block">
+												<li v-key="index" v-for="(highlight, index) in candidate.highlights">
+													<span :contenteditable="candidate.editable"
+														  @input="highlight=event.target.value">{{ highlight }}</span>
+												</li>
+											</ol>
+											<div v-if="candidate.editable"
+												 class="btn btn-success btn-sm btn-fab"
+												 @click="candidate.highlights.push('New...')">
+												<i class="la la-plus "></i> Add New</div>
 										</div>
 										<ul class="action_job">
-											<li @click="candidate.editable=!candidate.editable">
+											<li  @click="candidate.editable=!candidate.editable">
 												<span v-if="!candidate.editable">Edit</span>
 												<span v-else=>Save</span>
 												<a href="javascript:void(0)" title="">
-													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'" id="editeducationbutton"></i>
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'"></i>
 												</a>
 											</li>
-											<li @click="remove_additional_skills(candidate.id)">
+											<li @click="remove_volunteer(candidate._id)">
 												<span>Delete</span>
 												<a href="javascript:void(0)" title="" v-show="!candidate.editable">
 													<i class="la la-trash-o"></i>
@@ -219,6 +206,278 @@
 										</ul>
 									</div>
 								</div>
+
+								<!-- awards -->
+								<div class="border-title">
+									<h3>Awards</h3>
+									<a href="javascript:void(0)" title="" @click="add_awards()">
+										<i class="la la-plus" ></i> Add Award
+									</a>
+								</div>
+								<div class="edu-history-sec" >
+									<div class="edu-history style2"  v-key="candidate._id" v-for="candidate in awards">
+										<div class="edu-hisinfo">
+											<h3>
+												<i :contenteditable="candidate.editable"
+												   @input="candidate.title=event.target.value">
+													{{ candidate.title }}
+												</i>
+											</h3>
+											<p><i>
+													DATED <b @input="candidate.date=event.target.value"
+															 :contenteditable="candidate.editable"
+													>{{candidate.date}}</b>.
+												</i></p>
+
+											<h6>AWARDER : <span :contenteditable="candidate.editable"
+																@input="candidate.awarder=event.target.value"> {{ candidate.awarder }} </span></h6>
+											<p><span :contenteditable="candidate.editable"
+													 @input="candidate.summary=event.target.value"> {{ candidate.summary }} </span></p>
+										</div>
+										<ul class="action_job">
+											<li  @click="candidate.editable=!candidate.editable">
+												<span v-if="!candidate.editable">Edit</span>
+												<span v-else=>Save</span>
+												<a href="javascript:void(0)" title="">
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'"></i>
+												</a>
+											</li>
+											<li @click="remove_awards(candidate._id)">
+												<span>Delete</span>
+												<a href="javascript:void(0)" title="" v-show="!candidate.editable">
+													<i class="la la-trash-o"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<!-- publications -->
+								<div class="border-title">
+									<h3>Publications</h3>
+									<a href="javascript:void(0)" title="" @click="add_publications()">
+										<i class="la la-plus" ></i> Add Publications
+									</a>
+								</div>
+								<div class="edu-history-sec" >
+									<div class="edu-history style2"  v-key="candidate._id" v-for="candidate in publications">
+										<div class="edu-hisinfo">
+											<h3>
+												<i :contenteditable="candidate.editable"
+												   @input="candidate.name=event.target.value">
+													{{ candidate.name }}
+												</i>
+											</h3>
+											<p><i>
+													Publisher: <b @input="candidate.publisher=event.target.value"
+																  :contenteditable="candidate.editable"
+													>{{candidate.publisher}}</b>.
+												</i></p>
+											<p><i>
+													Released Date <b @input="candidate.releaseDate=event.target.value"
+																	 :contenteditable="candidate.editable"
+													>{{candidate.releaseDate}}</b>.
+												</i></p>
+
+											<h6>Website : <span :contenteditable="candidate.editable"
+																@input="candidate.website=event.target.value"> {{ candidate.website }} </span></h6>
+											<p><span :contenteditable="candidate.editable"
+													 @input="candidate.summary=event.target.value"> {{ candidate.summary }} </span></p>
+										</div>
+										<ul class="action_job">
+											<li  @click="candidate.editable=!candidate.editable">
+												<span v-if="!candidate.editable">Edit</span>
+												<span v-else=>Save</span>
+												<a href="javascript:void(0)" title="">
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'"></i>
+												</a>
+											</li>
+											<li @click="remove_publications(candidate._id)">
+												<span>Delete</span>
+												<a href="javascript:void(0)" title="" v-show="!candidate.editable">
+													<i class="la la-trash-o"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<!-- skills -->
+								<div class="border-title">
+									<h3>Publications</h3>
+									<a href="javascript:void(0)" title="" @click="add_skills()">
+										<i class="la la-plus" ></i> Add Skills
+									</a>
+								</div>
+								<div class="edu-history-sec" >
+									<div class="edu-history style2"  v-key="candidate._id" v-for="candidate in skills">
+										<div class="edu-hisinfo">
+											<h3>
+												<i :contenteditable="candidate.editable"
+												   @input="candidate.name=event.target.value">
+													{{ candidate.name }}
+												</i>
+											</h3>
+											<p><i>
+													Level: <b @input="candidate.level=event.target.value"
+															  :contenteditable="candidate.editable"
+													>{{candidate.level}}</b>.
+												</i></p>
+											<h6>Highlights</h6>
+											<ol class="d-block">
+												<li v-key="index" v-for="(keyword, index) in candidate.keywords">
+													<span :contenteditable="candidate.editable"
+														  @input="keyword=event.target.value">{{ keyword }}</span>
+												</li>
+											</ol>
+											<div v-if="candidate.editable"
+												 class="btn btn-success btn-sm btn-fab"
+												 @click="candidate.keywords.push('New...')">
+												<i class="la la-plus "></i> Add New </div>
+										</div>
+										<ul class="action_job">
+											<li  @click="candidate.editable=!candidate.editable">
+												<span v-if="!candidate.editable">Edit</span>
+												<span v-else=>Save</span>
+												<a href="javascript:void(0)" title="">
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'"></i>
+												</a>
+											</li>
+											<li @click="remove_skills(candidate._id)">
+												<span>Delete</span>
+												<a href="javascript:void(0)" title="" v-show="!candidate.editable">
+													<i class="la la-trash-o"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<!-- languages -->
+								<div class="border-title">
+									<h3>Languages</h3>
+									<a href="javascript:void(0)" title="" @click="add_languages()">
+										<i class="la la-plus" ></i> Add Languages
+									</a>
+								</div>
+								<div class="edu-history-sec" >
+									<div class="edu-history style2"  v-key="candidate._id" v-for="candidate in languages">
+										<div class="edu-hisinfo">
+											<h3>
+												<i :contenteditable="candidate.editable"
+												   @input="candidate.language=event.target.value">
+													{{ candidate.language }}
+												</i>
+											</h3>
+											<p><i>
+													Fluency: <b @input="candidate.fluency=event.target.value"
+															  :contenteditable="candidate.editable"
+													>{{candidate.fluency}}</b>.
+												</i></p>
+										</div>
+										<ul class="action_job">
+											<li  @click="candidate.editable=!candidate.editable">
+												<span v-if="!candidate.editable">Edit</span>
+												<span v-else=>Save</span>
+												<a href="javascript:void(0)" title="">
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'"></i>
+												</a>
+											</li>
+											<li @click="remove_languages(candidate._id)">
+												<span>Delete</span>
+												<a href="javascript:void(0)" title="" v-show="!candidate.editable">
+													<i class="la la-trash-o"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<!-- interests -->
+								<div class="border-title">
+									<h3>Interests</h3>
+									<a href="javascript:void(0)" title="" @click="add_interests()">
+										<i class="la la-plus" ></i> Add Interests
+									</a>
+								</div>
+								<div class="edu-history-sec" >
+									<div class="edu-history style2"  v-key="candidate._id" v-for="candidate in interests">
+										<div class="edu-hisinfo">
+											<h3>
+												<i :contenteditable="candidate.editable"
+												   @input="candidate.name=event.target.value">
+													{{ candidate.name }}
+												</i>
+											</h3>
+											<h6>keywords</h6>
+											<ol class="d-block">
+												<li v-key="index" v-for="(keyword, index) in candidate.keywords">
+													<span :contenteditable="candidate.editable"
+														  @input="keyword=event.target.value">{{ keyword }}</span>
+												</li>
+											</ol>
+											<div v-if="candidate.editable"
+												 class="btn btn-success btn-sm btn-fab"
+												 @click="candidate.keywords.push('New...')">
+												<i class="la la-plus "></i> Add New </div>
+										</div>
+										<ul class="action_job">
+											<li  @click="candidate.editable=!candidate.editable">
+												<span v-if="!candidate.editable">Edit</span>
+												<span v-else=>Save</span>
+												<a href="javascript:void(0)" title="">
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'"></i>
+												</a>
+											</li>
+											<li @click="remove_interests(candidate._id)">
+												<span>Delete</span>
+												<a href="javascript:void(0)" title="" v-show="!candidate.editable">
+													<i class="la la-trash-o"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<!-- references -->
+								<div class="border-title">
+									<h3>References</h3>
+									<a href="javascript:void(0)" title="" @click="add_references()">
+										<i class="la la-plus" ></i> Add Reference
+									</a>
+								</div>
+								<div class="edu-history-sec" >
+									<div class="edu-history style2"  v-key="candidate._id" v-for="candidate in references">
+										<div class="edu-hisinfo">
+											<h3>
+												<i :contenteditable="candidate.editable"
+												   @input="candidate.name=event.target.value">
+													{{ candidate.name }}
+												</i>
+											</h3>
+											<p><span :contenteditable="candidate.editable=!candidate.editable"
+													 @input="candidate.reference=event.target.value"
+												>{{ candidate.reference }}</span></p>
+										</div>
+										<ul class="action_job">
+											<li  @click="candidate.editable=!candidate.editable">
+												<span v-if="!candidate.editable">Edit</span>
+												<span v-else=>Save</span>
+												<a href="javascript:void(0)" title="">
+													<i :class="(candidate.editable) ?'la la-check':'la la-pencil'"></i>
+												</a>
+											</li>
+											<li @click="remove_reference(candidate._id)">
+												<span>Delete</span>
+												<a href="javascript:void(0)" title="" v-show="!candidate.editable">
+													<i class="la la-trash-o"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+
 							</div>
 						</div>
 						<div class="padding-top mt-3  d-block float-right">
@@ -353,117 +612,54 @@
 
 <script>
 	document.addEventListener('DOMContentLoaded', function(){
+
+		const x = <%- data.resume %>; /* noqa:* */	/* will display JSON */
+		const _m = function(arr){
+			return arr.map( obj => Object.assign({}, obj, {editable: false}))
+		}
 		window.vueApp = new Vue({
 			el: '#vue__app',
-			data : {
-				// user: null,
-				dummy_id: 100100,
-				candidates_dashboard:[{
-					id: 121,
-					editable: false,
-					institution: 'University',
-					year_from: '2008',
-					year_to: '2012',
-					title: 'Middle East Technical University Computer Science.',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
-				},{
-					id: 122,
-					editable: false,
-					institution: 'University',
-					vdate_from: '2008',
-					vdate_to: '2012',
-					title: 'Middle East Technical University Computer Science.',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
-				},{
-					id: 123,
-					editable: false,
-					institution: 'University',
-					year_from: '2008',
-					year_to: '2012',
-					title: 'Middle East Technical University Computer Science.',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
-				}
-				],
-				work_experience:[{
-					id: 1021,
-					editable: false,
-					institution: 'Web Designer',
-					year_from: '2008',
-					year_to: '2012',
-					title: 'Inwave Studio.',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
-				},{
-					id: 1022,
-					editable: false,
-					institution: 'Web Designer',
-					vdate_from: '2008',
-					vdate_to: '2012',
-					title: 'Inwave Studio.',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
-				}],
-				professional_skills:[{
-					id: 1830,
-					editable: false,
-					year_from: 'YYYY',
-					title: 'Enter Skill Title...',
-					description: 'Enter Skill Description...',
-					percentage: 80,
-				},{
-					id: 1832,
-					editable: false,
-					year_from: 'YYYY',
-					title: 'Enter Skill Title...',
-					description: 'Enter Skill Description...',
-					percentage: 70,
-				},
-				],
-				additional_skills:[{
-					id: 1630,
-					editable: false,
-					year_from: 'YYYY',
-					description: 'Enter Work Description...',
-					title: 'Enter Additional Skill Title...',
-				},{
-					id: 1632,
-					editable: false,
-					year_from: 'YYYY',
-					title: 'Enter  Additional Skill Title...',
-					description: 'Enter Additional Skill Description...',
-				}],
-			},
 			methods: {
 				generate_dummy_id: function(){ return this.dummy_id++ },
-				add_candidate_dashboard: function(){
-					this.candidates_dashboard.push({
-						id: this.generate_dummy_id(),
-						editable: true,
-						institution: 'Enter University ... ',
-						year_from: 'YYYY',
-						year_to: 'YYYY',
-						title: 'Enter Education Title...',
-						description: 'Enter Education Description...',
+				add_education: function(){
+					this.education.push({
+						"institution": "Add University ",
+						"area": "Add Department",
+						"studyType": "Cource Persued",
+						"startDate": "YYYY-MM-DD",
+						"endDate": "YYYY-MM-DD",
+						"gpa": "4.0",
+						"courses": [],
+						editable:true,
+						"_id": this.generate_dummy_id()
 					})
 				},
-				remove_candidate_dashboard: function(id){
-					this.candidates_dashboard = this.candidates_dashboard.filter(function(candidate){
-						return candidate.id !== id
+				remove_education: function(id){
+					this.education = this.education.filter(function(candidate){
+						return candidate._id !== id
 					});
 				},
 
-				add_work_experience: function(){
-					this.work_experience.push({
-						id: this.generate_dummy_id(),
+				add_work: function(){
+					this.work.push({
+						"company": "Pied Piper",
+						"position": "CEO/President",
+						"website": "http://piedpiper.com",
+						"startDate": "2013-12-01",
+						"endDate": "2014-12-01",
+						"summary": "Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.",
+						"highlights": [
+							"Build an algorithm for artist to detect if their music was violating copy right infringement laws",
+							"Successfully won Techcrunch Disrupt",
+							"Optimized an algorithm that holds the current world record for Weisman Scores"
+						],
 						editable: true,
-						institution: 'Enter Institution ... ',
-						year_from: 'YYYY',
-						year_to: 'YYYY',
-						title: 'Enter Work Title...',
-						description: 'Enter Work Description...',
+						"_id":this.generate_dummy_id()
 					})
 				},
-				remove_work_experience: function(id){
-					this.work_experience = this.work_experience.filter(function(candidate){
-						return candidate.id !== id
+				remove_work: function(id){
+					this.work = this.work.filter(function(candidate){
+						return candidate._id !== id
 					});
 				},
 
@@ -478,9 +674,10 @@
 				},
 				remove_professional_skills: function(id){
 					this.professional_skills = this.professional_skills.filter(function(candidate){
-						return candidate.id !== id;
+						return candidate._id !== id;
 					});
 				},
+
 				add_additional_skills: function(){
 					this.additional_skills.push({
 						id: this.generate_dummy_id(),
@@ -492,7 +689,124 @@
 				},
 				remove_additional_skills: function(id){
 					this.additional_skills = this.additional_skills.filter(function(candidate){
-						return candidate.id !== id;
+						return candidate._id !== id;
+					});
+				},
+
+				add_volunteer: function(){
+					this.volunteer.push({
+						"organization": "CoderDojo",
+						"position": "Teacher",
+						"website": "http://coderdojo.com/",
+						"startDate": "2012-01-01",
+						"endDate": "2013-01-01",
+						"summary": "Global movement of free coding clubs for young people.",
+						"highlights": [
+							"Awarded 'Teacher of the Month'"
+						],
+						_id: this.generate_dummy_id(),
+						editable: true,
+					})
+				},
+				remove_volunteer: function(id){
+					this.volunteer = this.volunteer.filter(function(candidate){
+						return candidate._id !== id;
+					});
+				},
+
+				add_awards: function(){
+					this.awards.push({
+						"title": "Add Title",
+						"date": "YYYY-MM-DD",
+						"awarder": "Awarder",
+						"summary": "Summery...",
+						_id: this.generate_dummy_id(),
+						editable: true,
+					})
+				},
+				remove_awards: function(id){
+					this.awards = this.awards.filter(function(candidate){
+						return candidate._id !== id;
+					});
+				},
+
+				add_publications: function(){
+					this.publications.push({
+						"name": "Video compression for 3d media",
+						"publisher": "Hooli",
+						"releaseDate": "2014-10-01",
+						"website": "http://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)",
+						"summary": "Innovative middle-out compression algorithm that changes the way we store data.",
+						_id: this.generate_dummy_id(),
+						editable: true,
+					})
+				},
+				remove_publications: function(id){
+					this.publications = this.publications.filter(function(candidate){
+						return candidate._id !== id;
+					});
+				},
+
+
+				add_skills: function(){
+					this.skills.push({
+						"name": "Video compression for 3d media",
+						"publisher": "Hooli",
+						"releaseDate": "2014-10-01",
+						"website": "http://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)",
+						"summary": "Innovative middle-out compression algorithm that changes the way we store data.",
+						_id: this.generate_dummy_id(),
+						editable: true,
+					})
+				},
+				remove_skills: function(id){
+					this.skills = this.skills.filter(function(candidate){
+						return candidate._id !== id;
+					});
+				},
+
+				add_languages: function(){
+					this.languages.push({
+						"language": "English",
+						"fluency": "Native speaker",
+						_id: this.generate_dummy_id(),
+						editable: true,
+					})
+				},
+				remove_languages: function(id){
+					this.languages = this.languages.filter(function(candidate){
+						return candidate._id !== id;
+					});
+				},
+
+				add_interests: function(){
+					this.interests.push({
+						"name": "Wildlife",
+						"keywords": [
+							"Ferrets",
+							"Unicorns"
+						],
+						_id: this.generate_dummy_id(),
+						editable: true,
+					})
+				},
+				remove_interests: function(id){
+					this.interests = this.interests.filter(function(candidate){
+						return candidate._id !== id;
+					});
+				},
+
+				add_references: function(){
+					this.references.push({
+						"name": "Erlich Bachman",
+						"reference": "It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company.",
+						_id: this.generate_dummy_id(),
+						editable: true,
+					})
+				},
+				remove_references: function(id){
+					this.references = this.references.filter(function(candidate){
+						return candidate._id !== id;
 					});
 				},
 
@@ -505,8 +819,8 @@
 						fetch('/candidate/updateCandidateProfile', {
 							method: 'POST', mode: 'cors',
 							body: JSON.stringify({
-								candidates_dashboard: self.candidates_dashboard,
-								work_experience: self.work_experience,
+								education: self.education,
+								work: self.work,
 								professional_skills:self.professional_skills,
 								additional_skills: self.additional_skills
 							}),
@@ -518,7 +832,7 @@
 						}).then(function(r) { return r.json()} ).then(function(r){
 							console.log(r);
 							swal("Data Submitted!", "", "success");
-								// window.location.reload();
+							// window.location.reload();
 						}).catch(function (e){
 							self.handle_errors('-')
 						})
@@ -529,9 +843,28 @@
 				handle_errors(field) {
 					swal("Please Fill all the fields. ", ", ".join(field), "danger");
 				}
+			},
+			data : {
+				// user: null,
+				dummy_id: x.dummy_id || 100100,
+				basics: x.basics,
+				_id: x._id || null,
+				created_at: x.created_at ,
+				candidateId: x.candidateId,
+
+				education: _m(x.education),
+				work: _m(x.work),
+				volunteer: _m(x.volunteer),
+				skills: _m(x.skills) ,
+				awards: _m(x.awards) ,
+				publications: _m(x.publications),
+				languages: _m(x.languages) ,
+				interests: _m(x.interests) ,
+				references: _m(x.references) ,
+
 			}
 
-		})
+		});
 	})
 
 </script>

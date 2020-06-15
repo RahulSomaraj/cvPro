@@ -23,8 +23,9 @@ router.post('/save',async (request,response)=>{
     var data = JSON.parse(JSON.stringify(request.body));
     var { email, userName, phone_number } = data;
     console.log(data)
-    await resumeService.create(request.session.userId);
-    candidateServcie.create(JSON.parse(JSON.stringify(request.body))).then((data)=>{        
+
+    candidateServcie.create(JSON.parse(JSON.stringify(request.body))).then(async (data) => {
+        await resumeService.create(data._id);
         response.redirect('/');
     })
     .catch((err)=>{
@@ -49,17 +50,13 @@ router.get('/find/:id',(request,response)=>{
 });
 
 
-router.put('/edit/:id',(request,response)=>{
-    candidateServcie.update(request.params)
-    .then((data)=>{
+router.put('/edit/:id', ( request, response ) => {
+    candidateServcie.update(request.params).then( (data) => {
         response.send(data);
-    })
-    .catch((err)=>{
+    }).catch( (err) => {
         response.send(err);
     })    
 });
-
-
 
 
 module.exports =  router;
