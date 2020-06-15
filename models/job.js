@@ -47,6 +47,21 @@ const jobSchema  = new Schema({
     rejected_ids : {
         type :Array,
         default : []
+    },
+    country:{
+        type : String
+    },
+    city : {
+        type : String
+    },
+    offeredSalary : { 
+        type : String
+    },
+    experienceRequired : {
+        type  : String
+    },
+    qualification : {
+        type :String
     }
 });
 

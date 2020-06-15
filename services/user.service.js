@@ -39,11 +39,9 @@ function create (data) {
 function update(user){
   return new Promise((rs, rj) => {
     console.log(user);
-    if(user.password) {
-      const hash = bcrypt.hashSync(user.password, 10);
-      user.password = hash;
-    }
-    User.findOneAndUpdate({ _id : user._id }, { '$set': {...user}} , {useFindAndModify: false,new: true }, (err, _user) => {
+    console.log(user);
+
+    User.findOneAndUpdate({ _id : user._id }, { '$set': user} , {useFindAndModify: false,new: true }, (err, _user) => {
       if (err) {
         return rj(err);
       }

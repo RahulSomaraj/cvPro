@@ -6,6 +6,7 @@ const userService = require('../services/user.service');
 const path = require('path');
 const resumeService =  require("../services/resume.service");
 const mailer = require('../services/nodemailer');
+const bcrypt = require('bcrypt');
 router.use(express.json());
 
 var resume = require(JSON.parse(JSON.stringify('../resume.json')));
@@ -64,6 +65,38 @@ router.get('/change_password', async (request, response) => {
         response.render(path.join(__dirname,'../public/JobHunt/candidates_change_password.ejs'), {data : data});
     }
 });
+
+
+router.post('/updatecustomerPassword', async (request, response) => {
+    console.log("request reached heres")
+    var data = await get_context_data(request, response);
+    if (data){
+        let incoming = JSON.parse(JSON.stringify(request.body));
+        if(incoming.newPassword == incoming.confirmPassword){
+            let datafound = await userService.findOne({_id : request.session.userId})
+            if(datafound){
+                if(bcrypt.compareSync(incoming.oldPassword,datafound.password)){
+                    datafound.password = incoming.newPassword
+                    const hash = bcrypt.hashSync(datafound.password, 10);
+                    datafound.password = hash;
+                    userService.update(datafound).then((data)=>{
+                        response.render(path.join(__dirname,'../public/JobHunt/candidates_change_password.ejs'), {data : data});
+                    })
+                    .catch((err)=>{
+                        console.log(err)
+                        response.render(path.join(__dirname,'../public/JobHunt/candidates_change_password.ejs'), {data : data});
+                    })    
+                }else{
+                    response.render(path.join(__dirname,'../public/JobHunt/candidates_change_password.ejs'), {data : data});
+                }
+            }
+        }
+        // response.render(path.join(__dirname,'../public/JobHunt/candidates_change_password.ejs'), {data : data});
+    }
+});
+
+
+
 
 router.get('/myresume', async (request, response) => {
     var data = await get_context_data(request, response);

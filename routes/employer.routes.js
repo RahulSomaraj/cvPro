@@ -20,7 +20,7 @@ router.get('/profile', async (request, response) => {
     response.render(path.join(__dirname,'../public/JobHunt/employer_profile.ejs'), {data : {...data, resume:{...resume}}});
 });
 
-router.get('/manage-jobs', async (request, response) => {
+router.get('/dashboard', async (request, response) => {
     var data = await get_context_data(request);
     response.render(path.join(__dirname,'../public/JobHunt/employer_manage_jobs.ejs'), {data : {...data, resume:{...resume}}});
 });
@@ -40,6 +40,7 @@ router.get('/change_password', async (request,response) => {
     var data = await get_context_data(request);
     response.render(path.join(__dirname,'../public/JobHunt/employer_change_password.ejs'), {data : data});
 });
+
 
 
 module.exports =  router;
