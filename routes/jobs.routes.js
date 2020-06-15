@@ -38,4 +38,9 @@ router.get('/logout',(request,response)=>{
     response.send('logout Page');
 });
 
+
+
+router.get('/appliedJobs',(request,response)=>{
+    jobService.find({})
+})
 module.exports =  router;

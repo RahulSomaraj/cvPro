@@ -6,6 +6,9 @@ var requirementSchema = new Schema( { name: String } );
 
 
 const jobSchema  = new Schema({
+    employer_id : {
+        type : mongoose.Types.ObjectId
+    },
     title : {
         type:String,
         required:true
@@ -32,6 +35,18 @@ const jobSchema  = new Schema({
     },
     updated_at:{
         type:Date
+    },
+    applied_ids:{
+        type : Array,
+        default : []
+    },
+    shortlisted_ids : {
+        type :Array,
+        default : []
+    },
+    rejected_ids : {
+        type :Array,
+        default : []
     }
 });
 

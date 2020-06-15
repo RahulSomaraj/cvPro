@@ -7,7 +7,6 @@ const auth = require("../middleware/auth")
 router.use(express.json());
 
 router.get('/',(request,response)=>{
-
     candidateServcie.find({}).then((data)=>{
         response.send(data);
     })
@@ -22,8 +21,6 @@ router.post('/save',async (request,response)=>{
 
     var data = JSON.parse(JSON.stringify(request.body));
     var { email, userName, phone_number } = data;
-    console.log(data)
-
     candidateServcie.create(JSON.parse(JSON.stringify(request.body))).then(async (data) => {
         await resumeService.create(data._id);
         response.redirect('/');
