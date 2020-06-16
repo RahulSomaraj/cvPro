@@ -26,6 +26,7 @@ app.use(session({
 const candidateRoutes = require('./routes/candidate.routes');
 const employerRoutes = require('./routes/employer.routes');
 const loginRoutes = require('./routes/login.routes');
+const adminRoutes = require('./routes/admin.routes');
 const jobRoutes = require('./routes/jobs.routes');
 const userRoutes = require('./routes/user.routes');
 const path = require('path');
@@ -33,6 +34,7 @@ const path = require('path');
 app.use('/user',userRoutes);
 app.use('/candidate',candidateRoutes);
 app.use('/employer',employerRoutes);
+app.use('/admin',adminRoutes);
 app.use('/job',jobRoutes);
 app.use('/',loginRoutes);
 
