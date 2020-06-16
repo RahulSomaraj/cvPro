@@ -157,10 +157,9 @@ router.post('/updatecandidate', async  (request, response)=>{
 
 
 router.post('/updateCandidateProfile', async (request,response) => {
-    let data = await get_context_data(request, response);
     let obj = JSON.parse(JSON.stringify(request.body));
     console.log(obj);
-    response.send('{"status": "done"}')
+    response.send('{ "status": "done" }');
 });
 
 
