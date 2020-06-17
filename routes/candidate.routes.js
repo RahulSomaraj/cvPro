@@ -72,7 +72,7 @@ router.post('/updatecustomerPassword', async (request, response) => {
     var data = await get_context_data(request, response);
     if (data){
         let incoming = JSON.parse(JSON.stringify(request.body));
-        if(incoming.newPassword == incoming.confirmPassword){
+        if(incoming.newPassword === incoming.confirmPassword){
             let datafound = await userService.findOne({_id : request.session.userId})
             if(datafound){
                 if(bcrypt.compareSync(incoming.oldPassword,datafound.password)){

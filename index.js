@@ -34,7 +34,7 @@ const path = require('path');
 app.use('/user',userRoutes);
 app.use('/candidate',candidateRoutes);
 app.use('/employer',employerRoutes);
-app.use('/admin',adminRoutes);
+app.use('/admin_views',adminRoutes);
 app.use('/job',jobRoutes);
 app.use('/',loginRoutes);
 

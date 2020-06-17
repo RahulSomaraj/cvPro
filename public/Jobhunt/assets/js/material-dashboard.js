@@ -171,7 +171,7 @@ md = {
 
     $.notify({
       icon: "add_alert",
-      message: "Welcome to <b>Material Dashboard Pro</b> - a beautiful admin panel for every web developer."
+      message: "Welcome to <b>Material Dashboard Pro</b> - a beautiful admin_views panel for every web developer."
 
     }, {
       type: type[color],
