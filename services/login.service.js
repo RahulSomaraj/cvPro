@@ -4,7 +4,6 @@ let bcrypt = require("bcrypt");
 function login(query){
     return new Promise((resolve,reject)=>{
         console.log("query");
-        query.password = bcrypt.hashSync(query.password, 10);
         var finalquery = {
             $and : [
                 {
@@ -14,17 +13,27 @@ function login(query){
                         
                     ]
                 },
-                {userType : query.userType}
-
+                {userType : query.userType},                
             ]
         }
-
-        console.log(finalquery);
-
-
+        
+        console.log(JSON.stringify(finalquery));
+        console.log(query)        
+        
         userModel.findOne(finalquery,(err,data)=>{
             if (err) return reject(err);
-            return resolve(data);
+            if(!!data){
+                query = bcrypt.compareSync(query.password, data.password);
+                if(query){
+                    console.log("Login done");
+                    return resolve(data);
+                }else{
+                    console.log("Login Failed");
+                    return resolve({})
+                }
+            }else{
+                return resolve({})
+            }
         });
     });
 }

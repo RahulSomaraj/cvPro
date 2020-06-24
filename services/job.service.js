@@ -1,53 +1,54 @@
 const Promise = require('bluebird');
 const bcrypt = require('bcrypt');
 // const Config = require('../../config/config');
-var User = require('../models/Job');
+var Job = require('../models/Job');
+var resumJson = require('../resume.json')
 
 
 function find (query = {} , projection = {}) {
-  return User.find(query, projection);
+  return Job.find(query, projection);
 }
 
 function findOne (query) {
-  return User.findOne(query);
+  return Job.findOne(query);
 }
 
 function create (data) {  
   return new Promise((rs, rj) => {
     const hash = bcrypt.hashSync(data.password, 10);
     data.password = hash;
-    let user= new User(data);
-    user.save(user, (err, _user) => {
+    let Job= new Job(data);
+    Job.save(Job, (err, _Job) => {
       if (err) {
         return rj(err);
       }
-      return rs(_user);
+      return rs(_Job);
     });
   });
 };
 
-function update(user){
+function update(Job){
   return new Promise((rs, rj) => {
-    if(user.password) {
-      const hash = bcrypt.hashSync(user.password, 10);
-      user.password = hash;
+    if(Job.password) {
+      const hash = bcrypt.hashSync(Job.password, 10);
+      Job.password = hash;
     }
-    User.findOneAndUpdate({ _id : user._id }, { '$set': user }, { new: true }, (err, _user) => {
+    Job.findOneAndUpdate({ _id : Job._id }, { '$set': Job }, { new: true }, (err, _Job) => {
       if (err) {
         return rj(err);
       }
-      return rs(_user);
+      return rs(_Job);
     });   
   });
 };
 
-function deleteUser(user) {
+function deleteJob(Job) {
   return new Promise((rs, rj) => {
-    User.findByIdAndRemove(user._id, (err, _user) => {
+    Job.findByIdAndRemove(Job._id, (err, _Job) => {
       if (err) {
         return rj(err);
       }
-      return rs(_user);
+      return rs(_Job);
     });
   });
 };
@@ -57,5 +58,5 @@ module.exports = {
   find,
   findOne,
   update,
-  deleteUser
+  deleteJob
 }

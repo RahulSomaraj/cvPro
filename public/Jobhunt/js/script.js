@@ -67,6 +67,17 @@ $(document).on('ready',function(){
         $('html').removeClass('no-scroll');
     });
 
+
+    $('.password-popup').on('click', function(){
+        $('.signin-popup-box').fadeOut('fast');
+        $('.password-popup-box').fadeIn('fast');
+        $('html').addClass('no-scroll');
+    });
+    $('.close-popup').on('click', function(){
+        $('.password-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+    });
+
     /* Signup Popup */
     $('.signup-popup').on('click', function(){
         $('.signup-popup-box').fadeIn('fast');
@@ -287,6 +298,35 @@ $(document).on('ready',function(){
 		$('.res-openmenu').removeClass('active')
 		$(this).addClass('active');
 	});
+
+
+
+
+
+    $('#addeducation').on('click', function(){   
+        $("#edu-history").clone().appendTo("#edu-history-sec");
+    });
+
+    $('#addexperiencebutton').on('click', function(){   
+       $("#workexperience").clone().appendTo("#workexperiencediv");
+    });
+    
+    
+    $('#addSkillbutton').on('click', function(){   
+        $("#addskill").clone().appendTo("#addskilldiv");
+     });
+     
+    $('#additionalskillsadd').on('click', function(){   
+        $("#additionalskills").clone().appendTo("#additionalskillsdiv");
+     });
+     
+
+
+     $('#editeducationbutton').on('click', function(){   
+         console.log("editable false")
+        $("#edu-history").attr('contenteditable','true');
+     });
+     
 
     /* Table Scroll */
     $('.manage-jobs-sec > table').parent().addClass('addscroll')
